@@ -1,0 +1,66 @@
+{
+  "name": "fluent-openclaw",
+  "version": "0.1.0-private-beta",
+  "private": false,
+  "type": "module",
+  "description": "Native OpenClaw plugin packaging for Fluent skills, managed auth, and MCP setup.",
+  "author": {
+    "name": "Fluent",
+    "email": "shane@securebyte.ca",
+    "url": "https://mcp.meetfluent.app"
+  },
+  "homepage": "https://github.com/shaner-git/fluent-docs/blob/main/guides/connecting-to-openclaw.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaner-git/fluent-openclaw.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shaner-git/fluent-openclaw/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "fluent",
+    "meals",
+    "health",
+    "style",
+    "openclaw",
+    "plugin",
+    "personal-mcp"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "assets",
+    "skills",
+    "src",
+    ".mcp.hosted.json",
+    ".mcp.json",
+    ".mcp.local.json",
+    ".mcp.oss.json",
+    "index.js",
+    "openclaw.plugin.json",
+    "README.md"
+  ],
+  "openclaw": {
+    "extensions": ["./index.js"],
+    "compat": {
+      "pluginApi": ">=2026.3.24-beta.2",
+      "minGatewayVersion": "2026.3.24-beta.2"
+    },
+    "build": {
+      "openclawVersion": "2026.3.24-beta.2",
+      "pluginSdkVersion": "2026.3.24-beta.2"
+    }
+  },
+  "x-fluent": {
+    "backendModesStatus": "plugin-managed-auth-beta",
+    "backendModes": ["hosted", "local"],
+    "legacyBackendModes": ["hosted", "local"],
+    "deploymentTracks": ["cloud", "oss"],
+    "defaultDeploymentTrack": "cloud",
+    "minimumContractVersion": "2026-04-20.fluent-core-v1.37",
+    "requiredHostedScopes": ["meals:read", "meals:write", "health:read", "health:write", "style:read", "style:write", "offline_access"],
+    "pluginManagedAuth": true
+  }
+}
