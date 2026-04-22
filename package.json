@@ -1,6 +1,6 @@
 {
   "name": "fluent-openclaw",
-  "version": "0.1.0-private-beta",
+  "version": "0.1.5",
   "private": false,
   "type": "module",
   "description": "Native OpenClaw plugin packaging for Fluent skills, managed auth, and MCP setup.",
@@ -30,14 +30,20 @@
   "engines": {
     "node": ">=22"
   },
+  "scripts": {
+    "build": "npm pack --dry-run",
+    "test": "node --test"
+  },
   "files": [
     "assets",
+    "docs",
     "skills",
     "src",
     ".mcp.hosted.json",
     ".mcp.json",
     ".mcp.local.json",
     ".mcp.oss.json",
+    "CHANGELOG.md",
     "index.js",
     "openclaw.plugin.json",
     "README.md"
@@ -54,6 +60,7 @@
     }
   },
   "x-fluent": {
+    "releaseChannel": "public-beta",
     "backendModesStatus": "plugin-managed-auth-beta",
     "backendModes": ["hosted", "local"],
     "legacyBackendModes": ["hosted", "local"],

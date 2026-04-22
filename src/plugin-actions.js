@@ -1,8 +1,12 @@
+import { existsSync, readFileSync } from 'node:fs';
 import { access, readFile } from 'node:fs/promises';
+import { homedir } from 'node:os';
+import path from 'node:path';
 import {
   CALLBACK_PORT,
   DEFAULT_PROFILE_NAME,
   DEFAULT_WARN_BEFORE_EXPIRY_MINUTES,
+  FLUENT_MINIMUM_CONTRACT_VERSION,
   FLUENT_LOCAL_TOKEN_ENV,
   FLUENT_OSS_TOKEN_ENV,
   FLUENT_REQUIRED_HOSTED_SCOPE,
@@ -13,8 +17,15 @@ import {
   cloneJson,
   extractFluentServer,
   extractServerBaseUrl,
+  normalizeMcpUrl,
   normalizeBaseUrl,
 } from './config-model.js';
+import {
+  buildExpectedAuthorizationHeader,
+  collectBindingIssues,
+  evaluateProbeCompatibility,
+  fetchProbe,
+} from './doctor.js';
 import { buildAuthStateFilePath, readTokenState, removeTokenState, writeTokenState } from './fs-state.js';
 import { bootstrapHostedToken, refreshHostedToken, tokenExpiresSoon } from './hosted-auth.js';
 import { getPluginContext, getRuntime } from './plugin-context.js';
@@ -116,11 +127,8 @@ export async function setupMcpServer(options = {}) {
   let accessToken = null;
   if (settings.track === 'cloud') {
     let current = await readTokenState(settings.stateFile);
-    if (!current) {
-      throw new Error('No Fluent hosted auth state was found. Run `openclaw fluent auth login` first.');
-    }
-    if (tokenExpiresSoon(current, settings.warnBeforeExpiryMinutes)) {
-      await refreshHostedAuth({ profile: settings.profile });
+    if (current && tokenExpiresSoon(current, settings.warnBeforeExpiryMinutes)) {
+      await refreshHostedAuth({ baseUrl: settings.baseUrl, profile: settings.profile });
       current = await readTokenState(settings.stateFile);
     }
     accessToken = current?.accessToken ?? null;
@@ -151,10 +159,20 @@ export async function doctorFluentPlugin(options = {}) {
   const config = await loadConfigSnapshot();
   const server = extractFluentServer(config);
   const state = settings.track === 'cloud' ? await readTokenState(settings.stateFile) : null;
+  const expectedAuthorizationHeader =
+    settings.track === 'cloud'
+      ? buildExpectedAuthorizationHeader(state?.accessToken)
+      : buildExpectedAuthorizationHeader(resolveOssToken({ ...options, optional: true }));
 
-  if (!server?.url) {
-    issues.push('mcp.servers.fluent is missing.');
-  }
+  issues.push(
+    ...collectBindingIssues({
+      baseUrl: settings.baseUrl,
+      expectedAuthorizationHeader,
+      requireAuthorization: settings.track === 'cloud' ? Boolean(state?.accessToken) : true,
+      server,
+      track: settings.track,
+    }),
+  );
 
   if (settings.track === 'cloud') {
     if (!state) {
@@ -166,10 +184,38 @@ export async function doctorFluentPlugin(options = {}) {
     issues.push('OSS Fluent token is missing. Pass --token or set FLUENT_OSS_TOKEN.');
   }
 
+  const probeResult = await fetchProbe({ baseUrl: settings.baseUrl });
+  if (!probeResult.ok) {
+    issues.push(probeResult.error);
+  } else {
+    const compatibility = evaluateProbeCompatibility({
+      minimumContractVersion: FLUENT_MINIMUM_CONTRACT_VERSION,
+      probe: probeResult.probe,
+      track: settings.track,
+    });
+    issues.push(...compatibility.issues);
+
+    return {
+      action: 'doctor',
+      baseUrl: settings.baseUrl,
+      contractVersion: compatibility.contractVersion,
+      issues,
+      mcpUrl: typeof server?.url === 'string' ? server.url : normalizeMcpUrl(settings.baseUrl),
+      ok: issues.length === 0,
+      probeUrl: probeResult.probeUrl,
+      profile: settings.profile,
+      track: settings.track,
+    };
+  }
+
   return {
     action: 'doctor',
+    baseUrl: settings.baseUrl,
+    contractVersion: null,
     issues,
+    mcpUrl: typeof server?.url === 'string' ? server.url : normalizeMcpUrl(settings.baseUrl),
     ok: issues.length === 0,
+    probeUrl: probeResult.probeUrl,
     profile: settings.profile,
     track: settings.track,
   };
@@ -238,21 +284,23 @@ async function writeConfigSnapshot(config) {
 }
 
 async function resolvePackagedBaseUrl(track) {
-  const { resolvePath } = getPluginContext();
   const candidates = PACKAGED_TEMPLATE_FILES[track] ?? [];
   for (const candidate of candidates) {
-    const candidatePath = resolvePath(candidate);
-    if (!(await exists(candidatePath))) {
-      continue;
-    }
-    try {
-      const parsed = JSON.parse(await readFile(candidatePath, 'utf8'));
-      const baseUrl = extractServerBaseUrl(parsed);
-      if (baseUrl) {
-        return baseUrl;
+    for (const candidatePath of resolvePackagedTemplateLocations(candidate)) {
+      if (!(await exists(candidatePath))) {
+        continue;
       }
-    } catch {
-      continue;
+      try {
+        const parsed = JSON.parse(await readFile(candidatePath, 'utf8'));
+        const baseUrl =
+          extractServerBaseUrl(parsed) ??
+          (typeof parsed?.url === 'string' ? normalizeBaseUrl(parsed.url) : null);
+        if (baseUrl) {
+          return baseUrl;
+        }
+      } catch {
+        continue;
+      }
     }
   }
   return null;
@@ -284,10 +332,14 @@ function resolveOssToken(options = {}) {
   if (envToken) {
     return envToken;
   }
+  const localToken = readDefaultOssTokenFromDisk();
+  if (localToken) {
+    return localToken;
+  }
   if (options.optional === true) {
     return null;
   }
-  throw new Error('Missing OSS Fluent token. Pass --token or set FLUENT_OSS_TOKEN.');
+  throw new Error('Missing OSS Fluent token. Pass --token, set FLUENT_OSS_TOKEN, or bootstrap Fluent OSS locally.');
 }
 
 function normalizeProfile(value) {
@@ -296,7 +348,7 @@ function normalizeProfile(value) {
 }
 
 function normalizeTrack(value) {
-  return value === 'oss' ? 'oss' : 'cloud';
+  return String(value ?? '').trim().toLowerCase() === 'oss' ? 'oss' : 'cloud';
 }
 
 function resolveWarnBeforeExpiryMinutes(value) {
@@ -315,4 +367,43 @@ async function exists(filePath) {
 
 function isRecord(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function resolvePackagedTemplateLocations(candidate) {
+  const locations = [];
+  try {
+    const { resolvePath } = getPluginContext();
+    const resolved = resolvePath(candidate);
+    if (resolved) {
+      locations.push(resolved);
+    }
+  } catch {
+    // Fall through to the package-relative path.
+  }
+  locations.push(new URL(`../${candidate}`, import.meta.url));
+  return locations;
+}
+
+function readDefaultOssTokenFromDisk() {
+  const rootDir = path.join(homedir(), '.fluent');
+  const authDir = path.join(rootDir, 'auth');
+  const candidates = ['oss-access-token.json', 'local-access-token.json'];
+
+  for (const candidate of candidates) {
+    const filePath = path.join(authDir, candidate);
+    if (!existsSync(filePath)) {
+      continue;
+    }
+    try {
+      const parsed = JSON.parse(readFileSync(filePath, 'utf8'));
+      const token = String(parsed?.token ?? '').trim();
+      if (token) {
+        return token;
+      }
+    } catch {
+      continue;
+    }
+  }
+
+  return null;
 }

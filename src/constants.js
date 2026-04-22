@@ -1,5 +1,7 @@
 export const FLUENT_PLUGIN_ID = 'fluent';
 export const FLUENT_SERVER_ID = 'fluent';
+export const FLUENT_MINIMUM_CONTRACT_VERSION = '2026-04-20.fluent-core-v1.37';
+export const FLUENT_RELEASE_CHANNEL = 'public-beta';
 export const DEFAULT_PROFILE_NAME = 'default';
 export const DEFAULT_WARN_BEFORE_EXPIRY_MINUTES = 10;
 export const CALLBACK_HOST = '127.0.0.1';

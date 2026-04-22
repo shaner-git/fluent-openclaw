@@ -57,25 +57,40 @@ export function registerFluentCli({ program }) {
   fluent
     .command('mcp')
     .description('Configure mcp.servers.fluent for hosted or OSS Fluent')
+    .argument('[track]', 'Target track (cloud or oss)')
     .option('--track <track>', 'Target track (cloud or oss)')
     .option('--base-url <url>', 'Fluent base URL override')
     .option('--profile <name>', 'Fluent auth profile name')
     .option('--token <token>', 'OSS bearer token override')
     .option('--json', 'Emit JSON output')
-    .action(async (options) => {
-      await runAction(setupMcpServer(options), options);
+    .action(async (track, options) => {
+      await runAction(setupMcpServer({ ...options, track: pickTrack(track, options.track) }), options);
     });
 
   fluent
     .command('doctor')
-    .description('Check Fluent token freshness and MCP binding health')
+    .description('Check Fluent auth state, MCP binding, and contract compatibility')
+    .argument('[track]', 'Target track (cloud or oss)')
     .option('--track <track>', 'Target track (cloud or oss)')
     .option('--base-url <url>', 'Fluent base URL override')
     .option('--profile <name>', 'Fluent auth profile name')
     .option('--token <token>', 'OSS bearer token override')
     .option('--json', 'Emit JSON output')
-    .action(async (options) => {
-      await runAction(doctorFluentPlugin(options), options);
+    .action(async (track, options) => {
+      await runAction(doctorFluentPlugin({ ...options, track: pickTrack(track, options.track) }), options);
+    });
+
+  fluent
+    .command('deep-check')
+    .description('Alias for doctor; runs the full Fluent compatibility probe')
+    .argument('[track]', 'Target track (cloud or oss)')
+    .option('--track <track>', 'Target track (cloud or oss)')
+    .option('--base-url <url>', 'Fluent base URL override')
+    .option('--profile <name>', 'Fluent auth profile name')
+    .option('--token <token>', 'OSS bearer token override')
+    .option('--json', 'Emit JSON output')
+    .action(async (track, options) => {
+      await runAction(doctorFluentPlugin({ ...options, track: pickTrack(track, options.track) }), options);
     });
 }
 
@@ -91,7 +106,14 @@ async function runAction(promise, options) {
 function renderResult(result) {
   if (result.action === 'doctor') {
     if (result.ok) {
-      return `Fluent doctor: ok (${result.track}, profile ${result.profile})`;
+      const lines = [`Fluent doctor: ok (${result.track}, profile ${result.profile})`];
+      if (result.contractVersion) {
+        lines.push(`Contract: ${result.contractVersion}`);
+      }
+      if (result.mcpUrl) {
+        lines.push(`MCP: ${result.mcpUrl}`);
+      }
+      return lines.join('\n');
     }
     return ['Fluent doctor found issues:', ...result.issues.map((issue) => `- ${issue}`)].join('\n');
   }
@@ -118,4 +140,12 @@ function renderResult(result) {
     lines.push(`MCP: ${result.mcpUrl}`);
   }
   return lines.join('\n');
+}
+
+function pickTrack(argumentTrack, optionTrack) {
+  const argumentValue = String(argumentTrack ?? '').trim();
+  if (argumentValue) {
+    return argumentValue;
+  }
+  return optionTrack;
 }
