@@ -15,7 +15,7 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 test('package metadata is ready for the public beta release', async () => {
   const packageJson = JSON.parse(await readFile(path.join(rootDir, 'package.json'), 'utf8'));
 
-  assert.equal(packageJson.version, '0.1.5');
+  assert.equal(packageJson.version, '0.1.6');
   assert.equal(packageJson['x-fluent'].releaseChannel, FLUENT_RELEASE_CHANNEL);
   assert.equal(packageJson['x-fluent'].minimumContractVersion, FLUENT_MINIMUM_CONTRACT_VERSION);
   assert.equal(packageJson.scripts.test, 'node --test');
@@ -30,6 +30,25 @@ test('README documents the public install and intentional omissions', async () =
   assert.match(readme, /openclaw fluent mcp cloud/);
   assert.match(readme, /openclaw fluent mcp oss --base-url http:\/\/127\.0\.0\.1:8788 --token <oss-token>/);
   assert.match(readme, /browser and retailer execution helpers are intentionally omitted/i);
+});
+
+test('GitHub release notes stay aligned and public-safe', async () => {
+  const releaseNotes = await readFile(path.join(rootDir, 'docs', 'releases', 'v0.1.6.md'), 'utf8');
+
+  assert.match(releaseNotes, /Fluent for OpenClaw v0\.1\.6/);
+  assert.match(releaseNotes, /Minimum Fluent MCP contract: `2026-04-20\.fluent-core-v1\.37`/);
+  assert.match(releaseNotes, /openclaw plugins install fluent-openclaw/);
+  assert.match(releaseNotes, /## Hosted Setup/);
+  assert.match(releaseNotes, /## Self-Hosted Setup/);
+  assert.match(releaseNotes, /openclaw fluent doctor/);
+  assert.match(releaseNotes, /openclaw fluent deep-check/);
+  assert.match(releaseNotes, /openclaw fluent mcp cloud/);
+  assert.match(releaseNotes, /openclaw fluent mcp oss --base-url http:\/\/127\.0\.0\.1:8788/);
+  assert.match(releaseNotes, /browser execution helpers are intentionally omitted/i);
+  assert.match(releaseNotes, /retailer automation helpers are intentionally omitted/i);
+  assert.doesNotMatch(releaseNotes, /C:\\Users\\/i);
+  assert.doesNotMatch(releaseNotes, /fixture/i);
+  assert.doesNotMatch(releaseNotes, /private-beta|private beta/i);
 });
 
 test('contract version comparison treats newer Fluent contracts as compatible', () => {

@@ -4,6 +4,11 @@
 
 - No unreleased changes yet.
 
+## v0.1.6 - 2026-04-21
+
+- Publishes a fresh public beta artifact after the `0.1.5` ClawHub entry was created with the wrong private-beta bundle contents.
+- Keeps the package versioning in sync with the public ClawHub line while preserving the `0.1.5` repo changes.
+
 ## v0.1.5 - 2026-04-21
 
 - Bumps the public `fluent-openclaw` package line to `0.1.5` so the repo and public package numbering can catch up with the previously published private-beta sequence.

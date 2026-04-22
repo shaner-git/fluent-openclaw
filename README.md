@@ -8,7 +8,7 @@ This repository is the public source for the published `fluent-openclaw` package
 
 `fluent-openclaw` is now a public beta release.
 
-- package version: `0.1.5`
+- package version: `0.1.6`
 - install surface: public
 - hosted auth and plugin-managed setup: still beta
 - supported deployment tracks: `cloud` and `oss`

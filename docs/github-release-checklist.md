@@ -1,6 +1,6 @@
 # Fluent OpenClaw GitHub Release Checklist
 
-Use this checklist when cutting a public package release such as `v0.1.5`.
+Use this checklist when cutting a public package release such as `v0.1.6`.
 
 ## Before Tagging
 
@@ -32,13 +32,13 @@ Use this checklist when cutting a public package release such as `v0.1.5`.
 
 ## Publish
 
-- create tag `v0.1.5`
+- create tag `v0.1.6`
 - publish the package release to GitHub
-- use the `v0.1.5` changelog entry as the release body
+- use [docs/releases/v0.1.6.md](./releases/v0.1.6.md) as the release body
 - verify README links and docs links render correctly on GitHub
 
 ## After Publish
 
-- confirm the public package metadata shows `0.1.5`
+- confirm the public package metadata shows `0.1.6`
 - confirm the install command works from a clean OpenClaw environment
 - confirm the package docs still match the live command behavior
