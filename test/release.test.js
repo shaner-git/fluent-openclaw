@@ -16,6 +16,20 @@ test('package metadata is ready for the public beta release', async () => {
   const packageJson = JSON.parse(await readFile(path.join(rootDir, 'package.json'), 'utf8'));
 
   assert.equal(packageJson.version, '0.1.6');
+  assert.equal(packageJson.author.email, 'hello@meetfluent.app');
+  assert.equal(packageJson.bugs.email, 'support@meetfluent.app');
+  assert.equal(packageJson['x-fluent'].artifactKind, 'standalone-openclaw-package');
+  assert.equal(packageJson['x-fluent'].canonicalPackageName, 'fluent-openclaw');
+  assert.equal(packageJson['x-fluent'].packagingDecision, 'oss-embedded-openclaw-bundle-is-a-distinct-helper-package');
+  assert.equal(packageJson['x-fluent'].ossEmbeddedPackageName, 'fluent-openclaw-oss-helper');
+  assert.equal(packageJson['x-fluent'].ossEmbeddedPackageLocation, 'fluent-oss/openclaw-plugin/fluent');
+  assert.equal(
+    packageJson['x-fluent'].ossEmbeddedGenerationSource,
+    'fluent-mcp/openclaw-plugin/fluent exported into fluent-oss',
+  );
+  assert.equal(packageJson['x-fluent'].contacts.general, 'hello@meetfluent.app');
+  assert.equal(packageJson['x-fluent'].contacts.support, 'support@meetfluent.app');
+  assert.equal(packageJson['x-fluent'].contacts.security, 'security@meetfluent.app');
   assert.equal(packageJson['x-fluent'].releaseChannel, FLUENT_RELEASE_CHANNEL);
   assert.equal(packageJson['x-fluent'].minimumContractVersion, FLUENT_MINIMUM_CONTRACT_VERSION);
   assert.equal(packageJson.scripts.test, 'node --test');
@@ -27,15 +41,36 @@ test('README documents the public install and intentional omissions', async () =
 
   assert.match(readme, /public beta/i);
   assert.match(readme, /openclaw plugins install fluent-openclaw/);
+  assert.match(readme, /canonical public source/i);
+  assert.match(readme, /not the same artifact/i);
+  assert.match(readme, /separate bundled OSS helper package/i);
+  assert.match(readme, /Neither package line is generated from the other/i);
   assert.match(readme, /openclaw fluent mcp cloud/);
   assert.match(readme, /openclaw fluent mcp oss --base-url http:\/\/127\.0\.0\.1:8788 --token <oss-token>/);
   assert.match(readme, /browser and retailer execution helpers are intentionally omitted/i);
+  assert.match(readme, /hello@meetfluent\.app/);
+  assert.match(readme, /support@meetfluent\.app/);
+  assert.match(readme, /security@meetfluent\.app/);
+});
+
+test('package versioning doc keeps the standalone and OSS helper artifacts distinct', async () => {
+  const versioningDoc = await readFile(path.join(rootDir, 'docs', 'package-versioning.md'), 'utf8');
+
+  assert.match(versioningDoc, /bundled OSS helper/i);
+  assert.match(versioningDoc, /canonical published OpenClaw package/i);
+  assert.match(versioningDoc, /published package name: `fluent-openclaw`/);
+  assert.match(versioningDoc, /package location: `fluent-oss\/openclaw-plugin\/fluent`/);
+  assert.match(versioningDoc, /package source: `fluent-mcp\/openclaw-plugin\/fluent`/);
+  assert.match(versioningDoc, /not the same artifact/i);
+  assert.match(versioningDoc, /not generated from this repository/i);
+  assert.match(versioningDoc, /2026-04-20\.fluent-core-v1\.37/);
 });
 
 test('GitHub release notes stay aligned and public-safe', async () => {
   const releaseNotes = await readFile(path.join(rootDir, 'docs', 'releases', 'v0.1.6.md'), 'utf8');
 
   assert.match(releaseNotes, /Fluent for OpenClaw v0\.1\.6/);
+  assert.match(releaseNotes, /canonical public beta package/i);
   assert.match(releaseNotes, /Minimum Fluent MCP contract: `2026-04-20\.fluent-core-v1\.37`/);
   assert.match(releaseNotes, /openclaw plugins install fluent-openclaw/);
   assert.match(releaseNotes, /## Hosted Setup/);
@@ -44,6 +79,11 @@ test('GitHub release notes stay aligned and public-safe', async () => {
   assert.match(releaseNotes, /openclaw fluent deep-check/);
   assert.match(releaseNotes, /openclaw fluent mcp cloud/);
   assert.match(releaseNotes, /openclaw fluent mcp oss --base-url http:\/\/127\.0\.0\.1:8788/);
+  assert.match(releaseNotes, /hello@meetfluent\.app/);
+  assert.match(releaseNotes, /support@meetfluent\.app/);
+  assert.match(releaseNotes, /security@meetfluent\.app/);
+  assert.match(releaseNotes, /fluent-mcp\/openclaw-plugin\/fluent/);
+  assert.match(releaseNotes, /not generated from this package line/i);
   assert.match(releaseNotes, /browser execution helpers are intentionally omitted/i);
   assert.match(releaseNotes, /retailer automation helpers are intentionally omitted/i);
   assert.doesNotMatch(releaseNotes, /C:\\Users\\/i);

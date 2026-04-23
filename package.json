@@ -6,7 +6,7 @@
   "description": "Native OpenClaw plugin packaging for Fluent skills, managed auth, and MCP setup.",
   "author": {
     "name": "Fluent",
-    "email": "shane@securebyte.ca",
+    "email": "hello@meetfluent.app",
     "url": "https://mcp.meetfluent.app"
   },
   "homepage": "https://github.com/shaner-git/fluent-docs/blob/main/guides/connecting-to-openclaw.md",
@@ -15,7 +15,8 @@
     "url": "https://github.com/shaner-git/fluent-openclaw.git"
   },
   "bugs": {
-    "url": "https://github.com/shaner-git/fluent-openclaw/issues"
+    "url": "https://github.com/shaner-git/fluent-openclaw/issues",
+    "email": "support@meetfluent.app"
   },
   "license": "MIT",
   "keywords": [
@@ -60,6 +61,13 @@
     }
   },
   "x-fluent": {
+    "artifactKind": "standalone-openclaw-package",
+    "canonicalPackageName": "fluent-openclaw",
+    "packagingDecision": "oss-embedded-openclaw-bundle-is-a-distinct-helper-package",
+    "ossEmbeddedPackageName": "fluent-openclaw-oss-helper",
+    "ossEmbeddedPackageLocation": "fluent-oss/openclaw-plugin/fluent",
+    "ossEmbeddedGenerationSource": "fluent-mcp/openclaw-plugin/fluent exported into fluent-oss",
+    "ossEmbeddedVersionPolicy": "Tracks Fluent OSS bundled-helper revisions and is not the published fluent-openclaw package line.",
     "releaseChannel": "public-beta",
     "backendModesStatus": "plugin-managed-auth-beta",
     "backendModes": ["hosted", "local"],
@@ -68,6 +76,11 @@
     "defaultDeploymentTrack": "cloud",
     "minimumContractVersion": "2026-04-20.fluent-core-v1.37",
     "requiredHostedScopes": ["meals:read", "meals:write", "health:read", "health:write", "style:read", "style:write", "offline_access"],
-    "pluginManagedAuth": true
+    "pluginManagedAuth": true,
+    "contacts": {
+      "general": "hello@meetfluent.app",
+      "support": "support@meetfluent.app",
+      "security": "security@meetfluent.app"
+    }
   }
 }

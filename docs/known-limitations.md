@@ -28,6 +28,8 @@ These limits are part of the supported `v0.1.6` public beta release.
 
 ## Packaging Limits
 
+- `fluent-openclaw` is the published standalone OpenClaw package line.
+- The embedded `fluent-oss/openclaw-plugin/fluent` bundle is a separate OSS helper package exported from `fluent-mcp/openclaw-plugin/fluent` and should not be treated as the same release artifact.
 - The package targets Node.js `22+`.
 - The package expects OpenClaw plugin API `2026.3.24-beta.2` or newer.
 - The minimum supported Fluent MCP contract version is `2026-04-20.fluent-core-v1.37`.

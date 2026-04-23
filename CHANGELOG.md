@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- No unreleased changes yet.
+- Replaces package-facing personal contact metadata with Fluent org-owned general, support, and security addresses in the public package manifest, README, and release notes.
+- Aligns the OpenClaw package relationship story with `fluent-mcp`: `fluent-openclaw` is the canonical published package, while the `fluent-oss` embedded bundle is a distinct helper exported from `fluent-mcp`.
 
 ## v0.1.6 - 2026-04-21
 

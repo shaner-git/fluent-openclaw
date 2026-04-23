@@ -2,7 +2,9 @@
 
 Fluent adds meal planning, grocery workflows, health routines, and closet-aware style help to OpenClaw.
 
-This repository is the public source for the published `fluent-openclaw` package.
+This repository is the canonical public source for the published `fluent-openclaw` package.
+
+The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is not the same artifact. It is a separate bundled OSS helper package exported from `fluent-mcp/openclaw-plugin/fluent`, with its own metadata and versioning. Neither package line is generated from the other.
 
 ## Release Status
 
@@ -13,6 +15,7 @@ This repository is the public source for the published `fluent-openclaw` package
 - hosted auth and plugin-managed setup: still beta
 - supported deployment tracks: `cloud` and `oss`
 - minimum Fluent MCP contract version: `2026-04-20.fluent-core-v1.37`
+- packaging decision: standalone `fluent-openclaw` is the canonical published package; the `fluent-oss` embedded bundle is a separate OSS helper
 
 ## Install
 
@@ -29,6 +32,8 @@ openclaw plugins install .
 ```
 
 The package targets Node.js `22+` and OpenClaw plugin API `2026.3.24-beta.2` or newer.
+
+For both `cloud` and `oss`, the supported public OpenClaw install surface is still `fluent-openclaw`. Do not treat `fluent-oss/openclaw-plugin/fluent` as the same package release line.
 
 ## Hosted Setup
 
@@ -99,6 +104,7 @@ Practical guidance:
 
 ## Docs
 
+- Package versioning: [docs/package-versioning.md](docs/package-versioning.md)
 - OpenClaw setup: [guides/connecting-to-openclaw.md](https://github.com/shaner-git/fluent-docs/blob/main/guides/connecting-to-openclaw.md)
 - Client configuration: [guides/client-configuration.md](https://github.com/shaner-git/fluent-docs/blob/main/guides/client-configuration.md)
 - Troubleshooting: [guides/troubleshooting.md](https://github.com/shaner-git/fluent-docs/blob/main/guides/troubleshooting.md)
@@ -107,8 +113,15 @@ Practical guidance:
 - GitHub release checklist: [docs/github-release-checklist.md](docs/github-release-checklist.md)
 - Public docs repo: [shaner-git/fluent-docs](https://github.com/shaner-git/fluent-docs)
 
+## Contact
+
+- General: `hello@meetfluent.app`
+- Support: `support@meetfluent.app`
+- Security and privacy: `security@meetfluent.app`
+
 ## Notes
 
 - Fluent Cloud is the default track; Fluent OSS is the supported self-hosted track.
 - The plugin manages hosted auth and rewrites `mcp.servers.fluent` for OpenClaw.
+- The bundled `openclaw-plugin/fluent` copy inside `fluent-oss` is an OSS helper package, not the published `fluent-openclaw` artifact.
 - Browser and retailer execution helpers are intentionally excluded so normal installs do not require unsafe-install overrides.
