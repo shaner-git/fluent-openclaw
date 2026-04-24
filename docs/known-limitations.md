@@ -5,8 +5,8 @@ These limits are part of the supported `v0.1.6` public beta release.
 ## Release Scope
 
 - `fluent-openclaw` is public beta, not GA.
-- Hosted Fluent access and plugin-managed hosted auth remain beta.
-- Fluent Cloud is the default package track, but public hosted availability may still be gated by rollout.
+- Fluent Cloud access is invite-based early access, and plugin-managed hosted auth remains beta.
+- Fluent Cloud is the early-access package track, and public hosted availability is still gated by invite or waitlist.
 
 ## OpenClaw Surface
 
@@ -17,7 +17,7 @@ These limits are part of the supported `v0.1.6` public beta release.
 ## Auth And Setup
 
 - OSS setup still requires a bearer token for `/mcp`.
-- Hosted auth depends on the Fluent hosted rollout and the active OAuth grant carrying the required Fluent scopes.
+- Plugin-managed hosted auth depends on Fluent Cloud early-access eligibility and the active OAuth grant carrying the required Fluent scopes.
 - `openclaw fluent doctor` verifies local binding and the live compatibility probe, but it does not replace a full end-to-end interactive prompt check inside OpenClaw.
 
 ## Intentional Omissions

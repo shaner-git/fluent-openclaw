@@ -73,7 +73,7 @@ test('GitHub release notes stay aligned and public-safe', async () => {
   assert.match(releaseNotes, /canonical public beta package/i);
   assert.match(releaseNotes, /Minimum Fluent MCP contract: `2026-04-20\.fluent-core-v1\.37`/);
   assert.match(releaseNotes, /openclaw plugins install fluent-openclaw/);
-  assert.match(releaseNotes, /## Hosted Setup/);
+  assert.match(releaseNotes, /## Cloud Early-Access Setup/);
   assert.match(releaseNotes, /## Self-Hosted Setup/);
   assert.match(releaseNotes, /openclaw fluent doctor/);
   assert.match(releaseNotes, /openclaw fluent deep-check/);
