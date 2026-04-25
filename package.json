@@ -67,7 +67,7 @@
     "ossEmbeddedPackageName": "fluent-openclaw-oss-helper",
     "ossEmbeddedPackageLocation": "fluent-oss/openclaw-plugin/fluent",
     "ossEmbeddedGenerationSource": "fluent-mcp/openclaw-plugin/fluent exported into fluent-oss",
-    "ossEmbeddedVersionPolicy": "Tracks Fluent OSS bundled-helper revisions and is not the published fluent-openclaw package line.",
+    "ossEmbeddedVersionPolicy": "Tracks Fluent open-source runtime bundled-helper revisions and is not the published fluent-openclaw package line.",
     "releaseChannel": "public-beta",
     "backendModesStatus": "plugin-managed-auth-beta",
     "backendModes": ["hosted", "local"],

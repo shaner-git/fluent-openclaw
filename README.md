@@ -12,7 +12,7 @@ The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is not 
 
 - package version: `0.1.6`
 - install surface: public
-- Fluent Cloud access and plugin-managed hosted auth: early access / beta
+- Fluent early access and plugin-managed hosted auth: early access / beta
 - supported deployment tracks: `cloud` and `oss`
 - minimum Fluent MCP contract version: `2026-04-20.fluent-core-v1.37`
 - packaging decision: standalone `fluent-openclaw` is the canonical published package; the `fluent-oss` embedded bundle is a separate OSS helper
@@ -40,13 +40,13 @@ For both `cloud` and `oss`, the supported public OpenClaw install surface is sti
 1. Install `fluent-openclaw`.
 2. Run `openclaw fluent auth login`.
 3. Open the printed URL in your browser and finish sign-in.
-4. Bind Fluent Cloud into OpenClaw with `openclaw fluent mcp cloud`.
+4. Bind Fluent early access into OpenClaw with `openclaw fluent mcp cloud`.
 5. Confirm the connection with `openclaw fluent doctor`.
 
 ## Self-Hosted Setup
 
-1. Start Fluent OSS by following the public docs in [shaner-git/fluent-oss](https://github.com/shaner-git/fluent-oss).
-2. Bind Fluent OSS into OpenClaw:
+1. Start Fluent open-source runtime by following the public docs in [shaner-git/fluent-oss](https://github.com/shaner-git/fluent-oss).
+2. Bind Fluent open-source runtime into OpenClaw:
 
 ```bash
 openclaw fluent mcp oss --base-url http://127.0.0.1:8788 --token <oss-token>
@@ -96,7 +96,7 @@ Practical guidance:
 ## Known Limitations
 
 - This package is public beta, not GA.
-- Fluent Cloud access is invite-based early access, and plugin-managed hosted auth remains beta.
+- Fluent is invite-based early access, and plugin-managed hosted auth remains beta.
 - OpenClaw does not render Fluent MCP widgets or output templates today.
 - OSS setup still requires an explicit bearer token.
 - Browser and retailer execution helpers are intentionally omitted from the OpenClaw package.
@@ -121,7 +121,7 @@ Practical guidance:
 
 ## Notes
 
-- Fluent Cloud is the early-access managed track; Fluent OSS is the supported self-hosted track.
+- Fluent is the early-access managed path; the open-source runtime is the supported self-hosted path.
 - The plugin manages hosted auth and rewrites `mcp.servers.fluent` for OpenClaw.
 - The bundled `openclaw-plugin/fluent` copy inside `fluent-oss` is an OSS helper package, not the published `fluent-openclaw` artifact.
 - Browser and retailer execution helpers are intentionally excluded so normal installs do not require unsafe-install overrides.
