@@ -14,7 +14,8 @@ The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is not 
 - install surface: public
 - Fluent early access and plugin-managed hosted auth: early access / beta
 - supported deployment tracks: `cloud` and `oss`
-- minimum Fluent MCP contract version: `2026-04-20.fluent-core-v1.37`
+- minimum compatible Fluent MCP contract version: `2026-04-20.fluent-core-v1.37`
+- current reference Fluent MCP contract version: `2026-04-26.fluent-core-v1.48`
 - packaging decision: standalone `fluent-openclaw` is the canonical published package; the `fluent-oss` embedded bundle is a separate OSS helper
 
 ## Install
@@ -89,6 +90,7 @@ openclaw fluent doctor oss --base-url http://127.0.0.1:8788 --token <oss-token>
 Practical guidance:
 
 - OpenClaw supports the same canonical Fluent contract as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
+- The package currently keeps `2026-04-20.fluent-core-v1.37` as its minimum compatible contract while using `2026-04-26.fluent-core-v1.48` as the current reference contract.
 - ChatGPT is the strongest Fluent host for rich widget surfaces such as recipe cards, grocery lists, pantry dashboards, and purchase-analysis views.
 - Claude, Codex, OpenClaw, and generic MCP clients should use canonical tools and text-first fallbacks unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use the canonical tools and let the host render the results conversationally.

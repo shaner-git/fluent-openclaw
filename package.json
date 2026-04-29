@@ -75,6 +75,7 @@
     "deploymentTracks": ["cloud", "oss"],
     "defaultDeploymentTrack": "cloud",
     "minimumContractVersion": "2026-04-20.fluent-core-v1.37",
+    "currentReferenceContractVersion": "2026-04-26.fluent-core-v1.48",
     "requiredHostedScopes": ["meals:read", "meals:write", "health:read", "health:write", "style:read", "style:write", "offline_access"],
     "pluginManagedAuth": true,
     "contacts": {
