@@ -17,7 +17,7 @@ These limits are part of the supported `v0.1.6` public beta release.
 ## Auth And Setup
 
 - OSS setup still requires a bearer token for `/mcp`.
-- Plugin-managed hosted auth depends on Fluent early access early-access eligibility and the active OAuth grant carrying the required Fluent scopes.
+- Plugin-managed hosted auth depends on Fluent managed early-access eligibility and the active OAuth grant carrying the required Fluent scopes.
 - `openclaw fluent doctor` verifies local binding and the live compatibility probe, but it does not replace a full end-to-end interactive prompt check inside OpenClaw.
 
 ## Intentional Omissions
@@ -33,4 +33,4 @@ These limits are part of the supported `v0.1.6` public beta release.
 - The package targets Node.js `22+`.
 - The package expects OpenClaw plugin API `2026.3.24-beta.2` or newer.
 - The minimum compatible Fluent MCP contract version is `2026-04-20.fluent-core-v1.37`.
-- The current reference Fluent MCP contract version is `2026-04-26.fluent-core-v1.48`.
+- The current reference Fluent MCP contract version is `2026-05-12.fluent-core-v1.66`.

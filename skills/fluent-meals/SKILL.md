@@ -76,7 +76,7 @@ Default low-cost tools:
 - `meals_generate_grocery_plan`
 - `meals_get_grocery_plan` with `view: "summary"`
 - `meals_prepare_order`
-- `meals_render_grocery_list`
+- `meals_render_grocery_list_v2`
 
 When the user says they are already cooking a planned meal or have started prep:
 
@@ -106,13 +106,13 @@ Recipe presentation pattern:
 
 Grocery-list presentation pattern:
 
-- when the user is asking for the actionable grocery view itself, such as "What's on my grocery list?", "What do I still need to buy?", or "Show me this week's grocery list", prefer `meals_render_grocery_list` as the default end-user experience in rich hosts
+- when the user is asking for the actionable grocery view itself, such as "What's on my grocery list?", "What do I still need to buy?", or "Show me this week's grocery list", prefer `meals_render_grocery_list_v2` as the default end-user experience in rich hosts
 - do not require a raw grocery-plan read first for those ordinary grocery-list asks
 - gather or reconcile extra grocery state first only when the turn specifically needs underlying plan detail, reconciliation detail, or intent debugging:
   - `meals_get_grocery_plan`
   - `meals_prepare_order`
   - `meals_list_grocery_intents`
-- if the host supports rich app surfaces, use `meals_render_grocery_list` directly for the primary shopping view
+- if the host supports rich app surfaces, use `meals_render_grocery_list_v2` directly for the primary shopping view
 - do not require the user to ask for a "card" or "surface" explicitly when the turn is clearly grocery-list-first
 - keep the text answer truthful and complete even when you expect the host to render the grocery list
 
