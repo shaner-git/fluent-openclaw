@@ -85,22 +85,22 @@ openclaw fluent doctor oss --base-url http://127.0.0.1:8788 --token <oss-token>
 | Open-source MCP binding helper in this package | Yes | No | No | Yes | Manual config |
 | Rich Fluent app views | No | Yes | No | No | Only if the host explicitly supports MCP Apps-style widgets |
 | Text-first Fluent workflows | Yes | Yes | Yes | Yes | Yes |
-| Fluent-specific recipe, pantry, grocery, and purchase widgets | No | Yes | No | No | Only if the host explicitly supports MCP Apps-style widgets |
+| First submitted Fluent app widgets | No | Home, recipe cards, grocery lists, and purchase analysis | No | No | Only if the host explicitly supports MCP Apps-style widgets |
 
 Practical guidance:
 
 - OpenClaw supports the same Fluent meals, grocery, health, and style capabilities as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
 - The package currently keeps `2026-04-20.fluent-core-v1.37` as its minimum compatible contract while using `2026-05-12.fluent-core-v1.66` as the current reference contract.
-- ChatGPT is the strongest Fluent host for rich widget surfaces such as recipe cards, grocery lists, pantry dashboards, and purchase-analysis views.
+- ChatGPT is the strongest Fluent host for the first submitted rich app experience: Fluent Home, recipe cards, grocery lists, Style purchase analysis, Health routines, and account status.
 - Claude, Codex, OpenClaw, and generic MCP clients should use Fluent's tools and complete text-first answers unless the host explicitly proves MCP Apps-style widget support.
-- OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved context and let the host present the results conversationally.
+- OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved memory and let the host present the results conversationally.
 
 ## Known Limitations
 
 - This package is public beta, not GA.
 - Fluent is invite-based early access, and plugin-managed hosted auth remains beta.
 - OpenClaw does not render Fluent rich app views today.
-- OSS setup still requires an explicit bearer token.
+- Open-source runtime setup still requires an explicit bearer token.
 - Browser and retailer execution helpers are intentionally omitted from the OpenClaw package.
 - Unsafe local browser automation and retailer checkout scripts are not part of this plugin and are not required for standard installs.
 

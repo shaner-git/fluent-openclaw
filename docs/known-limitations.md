@@ -11,12 +11,12 @@ These limits are part of the supported `v0.1.6` public beta release.
 ## OpenClaw Surface
 
 - OpenClaw can use Fluent's meals, grocery, health, and style tools, but it does not render the Fluent widget surfaces used by ChatGPT-compatible MCP Apps hosts.
-- OpenClaw should use Fluent's saved context for recipes, grocery plans, pantry state, and purchase analysis rather than expecting Fluent-owned visual cards.
+- OpenClaw should use Fluent's saved memory for recipes, grocery plans, pantry state, and purchase analysis rather than expecting Fluent-owned visual cards.
 - The package ships Fluent skills and setup helpers, not a separate first-party Fluent UI.
 
 ## Auth And Setup
 
-- OSS setup still requires a bearer token for `/mcp`.
+- Open-source runtime setup still requires a bearer token for `/mcp`.
 - Plugin-managed hosted auth depends on Fluent managed early-access eligibility and the active OAuth grant carrying the required Fluent scopes.
 - `openclaw fluent doctor` verifies local binding and the live compatibility probe, but it does not replace a full end-to-end interactive prompt check inside OpenClaw.
 
