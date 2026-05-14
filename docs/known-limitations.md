@@ -10,8 +10,8 @@ These limits are part of the supported `v0.1.6` public beta release.
 
 ## OpenClaw Surface
 
-- OpenClaw uses the canonical Fluent MCP tools and resources, but it does not render the Fluent widget surfaces used by ChatGPT-compatible MCP Apps hosts.
-- OpenClaw should use canonical Fluent results for recipes, grocery plans, pantry state, and purchase analysis rather than expecting Fluent-owned visual cards.
+- OpenClaw can use Fluent's meals, grocery, health, and style tools, but it does not render the Fluent widget surfaces used by ChatGPT-compatible MCP Apps hosts.
+- OpenClaw should use Fluent's saved context for recipes, grocery plans, pantry state, and purchase analysis rather than expecting Fluent-owned visual cards.
 - The package ships Fluent skills and setup helpers, not a separate first-party Fluent UI.
 
 ## Auth And Setup
