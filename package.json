@@ -16,7 +16,7 @@
   },
   "bugs": {
     "url": "https://github.com/shaner-git/fluent-openclaw/issues",
-    "email": "support@meetfluent.app"
+    "email": "hello@meetfluent.app"
   },
   "license": "MIT",
   "keywords": [
@@ -80,7 +80,7 @@
     "pluginManagedAuth": true,
     "contacts": {
       "general": "hello@meetfluent.app",
-      "support": "support@meetfluent.app",
+      "support": "hello@meetfluent.app",
       "security": "security@meetfluent.app"
     }
   }

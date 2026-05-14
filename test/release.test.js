@@ -17,7 +17,7 @@ test('package metadata is ready for the public beta release', async () => {
 
   assert.equal(packageJson.version, '0.1.6');
   assert.equal(packageJson.author.email, 'hello@meetfluent.app');
-  assert.equal(packageJson.bugs.email, 'support@meetfluent.app');
+  assert.equal(packageJson.bugs.email, 'hello@meetfluent.app');
   assert.equal(packageJson['x-fluent'].artifactKind, 'standalone-openclaw-package');
   assert.equal(packageJson['x-fluent'].canonicalPackageName, 'fluent-openclaw');
   assert.equal(packageJson['x-fluent'].packagingDecision, 'oss-embedded-openclaw-bundle-is-a-distinct-helper-package');
@@ -28,7 +28,7 @@ test('package metadata is ready for the public beta release', async () => {
     'fluent-mcp/openclaw-plugin/fluent exported into fluent-oss',
   );
   assert.equal(packageJson['x-fluent'].contacts.general, 'hello@meetfluent.app');
-  assert.equal(packageJson['x-fluent'].contacts.support, 'support@meetfluent.app');
+  assert.equal(packageJson['x-fluent'].contacts.support, 'hello@meetfluent.app');
   assert.equal(packageJson['x-fluent'].contacts.security, 'security@meetfluent.app');
   assert.equal(packageJson['x-fluent'].releaseChannel, FLUENT_RELEASE_CHANNEL);
   assert.equal(packageJson['x-fluent'].minimumContractVersion, FLUENT_MINIMUM_CONTRACT_VERSION);
@@ -49,7 +49,7 @@ test('README documents the public install and intentional omissions', async () =
   assert.match(readme, /openclaw fluent mcp oss --base-url http:\/\/127\.0\.0\.1:8788 --token <oss-token>/);
   assert.match(readme, /browser and retailer execution helpers are intentionally omitted/i);
   assert.match(readme, /hello@meetfluent\.app/);
-  assert.match(readme, /support@meetfluent\.app/);
+  assert.match(readme, /Support: `hello@meetfluent\.app`/);
   assert.match(readme, /security@meetfluent\.app/);
 });
 
@@ -73,14 +73,14 @@ test('GitHub release notes stay aligned and public-safe', async () => {
   assert.match(releaseNotes, /canonical public beta package/i);
   assert.match(releaseNotes, /Minimum Fluent MCP contract: `2026-04-20\.fluent-core-v1\.37`/);
   assert.match(releaseNotes, /openclaw plugins install fluent-openclaw/);
-  assert.match(releaseNotes, /## Cloud Early-Access Setup/);
-  assert.match(releaseNotes, /## Self-Hosted Setup/);
+  assert.match(releaseNotes, /## Managed Early-Access Setup/);
+  assert.match(releaseNotes, /## Run Fluent Yourself/);
   assert.match(releaseNotes, /openclaw fluent doctor/);
   assert.match(releaseNotes, /openclaw fluent deep-check/);
   assert.match(releaseNotes, /openclaw fluent mcp cloud/);
   assert.match(releaseNotes, /openclaw fluent mcp oss --base-url http:\/\/127\.0\.0\.1:8788/);
   assert.match(releaseNotes, /hello@meetfluent\.app/);
-  assert.match(releaseNotes, /support@meetfluent\.app/);
+  assert.match(releaseNotes, /Support: `hello@meetfluent\.app`/);
   assert.match(releaseNotes, /security@meetfluent\.app/);
   assert.match(releaseNotes, /fluent-mcp\/openclaw-plugin\/fluent/);
   assert.match(releaseNotes, /not generated from this package line/i);

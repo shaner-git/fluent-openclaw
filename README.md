@@ -34,9 +34,9 @@ openclaw plugins install .
 
 The package targets Node.js `22+` and OpenClaw plugin API `2026.3.24-beta.2` or newer.
 
-For both `cloud` and `oss`, the supported public OpenClaw install surface is still `fluent-openclaw`. Do not treat `fluent-oss/openclaw-plugin/fluent` as the same package release line.
+For both managed early access and self-hosted use, the supported public OpenClaw install surface is still `fluent-openclaw`. Do not treat `fluent-oss/openclaw-plugin/fluent` as the same package release line.
 
-## Cloud Early-Access Setup
+## Managed Early-Access Setup
 
 1. Install `fluent-openclaw`.
 2. Run `openclaw fluent auth login`.
@@ -44,7 +44,7 @@ For both `cloud` and `oss`, the supported public OpenClaw install surface is sti
 4. Bind Fluent early access into OpenClaw with `openclaw fluent mcp cloud`.
 5. Confirm the connection with `openclaw fluent doctor`.
 
-## Self-Hosted Setup
+## Run Fluent Yourself
 
 1. Start Fluent open-source runtime by following the public docs in [shaner-git/fluent-oss](https://github.com/shaner-git/fluent-oss).
 2. Bind Fluent open-source runtime into OpenClaw:
@@ -78,13 +78,13 @@ openclaw fluent doctor oss --base-url http://127.0.0.1:8788 --token <oss-token>
 
 | Capability | OpenClaw | ChatGPT | Claude | Codex | generic MCP clients |
 |---|---|---|---|---|---|
-| Core Fluent MCP tools and resources | Yes | Yes | Yes | Yes | Yes |
+| Fluent MCP tools and resources | Yes | Yes | Yes | Yes | Yes |
 | Native packaged Fluent client plugin | Yes | No | No | Yes | No |
 | Bundled Fluent skills and routing hints | Yes | No | No | Yes | No |
 | Plugin-managed hosted auth helper in this package | Yes | No | No | No | No |
-| OSS MCP binding helper in this package | Yes | No | No | Yes | Manual config |
+| Open-source MCP binding helper in this package | Yes | No | No | Yes | Manual config |
 | Rich Fluent MCP widgets and output templates | No | Yes | No | No | Only if the host explicitly supports MCP Apps-style widgets |
-| Canonical text-first Fluent workflows | Yes | Yes | Yes | Yes | Yes |
+| Text-first Fluent workflows | Yes | Yes | Yes | Yes | Yes |
 | Fluent-specific recipe, pantry, grocery, and purchase widgets | No | Yes | No | No | Only if the host explicitly supports MCP Apps-style widgets |
 
 Practical guidance:
@@ -118,7 +118,7 @@ Practical guidance:
 ## Contact
 
 - General: `hello@meetfluent.app`
-- Support: `support@meetfluent.app`
+- Support: `hello@meetfluent.app`
 - Security and privacy: `security@meetfluent.app`
 
 ## Notes
