@@ -13,7 +13,7 @@ The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is not 
 - package version: `0.1.6`
 - install surface: public
 - Fluent early access and plugin-managed hosted auth: early access / beta
-- supported deployment tracks: `cloud` and `oss`
+- setup command labels: `cloud` and `oss`
 - minimum compatible Fluent MCP contract version: `2026-04-20.fluent-core-v1.37`
 - current reference Fluent MCP contract version: `2026-05-12.fluent-core-v1.66`
 - packaging decision: standalone `fluent-openclaw` is the canonical published package; the `fluent-oss` embedded bundle is a separate OSS helper
@@ -36,7 +36,7 @@ The package targets Node.js `22+` and OpenClaw plugin API `2026.3.24-beta.2` or 
 
 For both managed early access and self-hosted use, the supported public OpenClaw install surface is still `fluent-openclaw`. Do not treat `fluent-oss/openclaw-plugin/fluent` as the same package release line.
 
-## Managed Early-Access Setup
+## Early-Access Setup
 
 1. Install `fluent-openclaw`.
 2. Run `openclaw fluent auth login`.
@@ -123,7 +123,7 @@ Practical guidance:
 
 ## Notes
 
-- Fluent is the early-access managed path; the open-source runtime is the supported self-hosted path.
+- Fluent early access is the managed path; the open-source runtime is available when you want to run Fluent yourself.
 - The plugin manages hosted auth and rewrites `mcp.servers.fluent` for OpenClaw.
 - The bundled `openclaw-plugin/fluent` copy inside `fluent-oss` is an OSS helper package, not the published `fluent-openclaw` artifact.
 - Browser and retailer execution helpers are intentionally excluded so normal installs do not require unsafe-install overrides.
