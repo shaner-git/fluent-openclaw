@@ -5,7 +5,7 @@ These limits are part of the supported `v0.1.6` public beta release.
 ## Release Scope
 
 - `fluent-openclaw` is public beta, not GA.
-- Fluent is invite-based early access, and plugin-managed hosted auth remains beta.
+- Fluent is invite-based early access and currently free, and plugin-managed hosted auth remains beta.
 - Fluent early access is invite-based, and the open-source runtime is available if you want to run Fluent yourself.
 
 ## OpenClaw Surface

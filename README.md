@@ -12,7 +12,8 @@ The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is not 
 
 - package version: `0.1.6`
 - install surface: public
-- Fluent early access and plugin-managed hosted auth: early access / beta
+- Fluent early access: invite-based and currently free
+- plugin-managed hosted auth: beta
 - setup command labels: `cloud` and `oss`
 - minimum compatible Fluent MCP contract version: `2026-04-20.fluent-core-v1.37`
 - current reference Fluent MCP contract version: `2026-05-12.fluent-core-v1.66`
@@ -98,7 +99,7 @@ Practical guidance:
 ## Known Limitations
 
 - This package is public beta, not GA.
-- Fluent is invite-based early access, and plugin-managed hosted auth remains beta.
+- Fluent is invite-based early access and currently free, and plugin-managed hosted auth remains beta.
 - OpenClaw does not render Fluent rich app views today.
 - Open-source runtime setup still requires an explicit bearer token.
 - Browser and retailer execution helpers are intentionally omitted from the OpenClaw package.
