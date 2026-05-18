@@ -32,6 +32,7 @@ test('package metadata is ready for the public beta release', async () => {
   assert.equal(packageJson['x-fluent'].contacts.security, 'security@meetfluent.app');
   assert.equal(packageJson['x-fluent'].releaseChannel, FLUENT_RELEASE_CHANNEL);
   assert.equal(packageJson['x-fluent'].minimumContractVersion, FLUENT_MINIMUM_CONTRACT_VERSION);
+  assert.equal(packageJson['x-fluent'].currentReferenceContractVersion, '2026-05-17.fluent-core-v1.84');
   assert.equal(packageJson.scripts.test, 'node --test');
   assert.equal(packageJson.scripts.build, 'npm pack --dry-run');
 });
@@ -89,6 +90,27 @@ test('GitHub release notes stay aligned and public-safe', async () => {
   assert.doesNotMatch(releaseNotes, /C:\\Users\\/i);
   assert.doesNotMatch(releaseNotes, /fixture/i);
   assert.doesNotMatch(releaseNotes, /private-beta|private beta/i);
+});
+
+test('OpenClaw skills stay text-first and current with staged onboarding guidance', async () => {
+  const mealsSkill = await readFile(path.join(rootDir, 'skills', 'fluent-meals', 'SKILL.md'), 'utf8');
+  const styleSkill = await readFile(path.join(rootDir, 'skills', 'fluent-style', 'SKILL.md'), 'utf8');
+  const releaseChecklist = await readFile(path.join(rootDir, 'docs', 'github-release-checklist.md'), 'utf8');
+
+  assert.match(mealsSkill, /meals_get_onboarding_calibration/);
+  assert.match(mealsSkill, /prefer `meals_get_current_grocery_list` and answer in text/);
+  assert.match(mealsSkill, /Do not default to `meals_render_recipe_card` or `meals_render_grocery_list_v2` in OpenClaw/);
+  assert.doesNotMatch(mealsSkill, /prefer `meals_render_grocery_list_v2` as the default end-user experience/i);
+
+  assert.match(styleSkill, /style_get_onboarding_calibration/);
+  assert.match(styleSkill, /style_prepare_purchase_analysis/);
+  assert.match(styleSkill, /style_get_purchase_vision_packet/);
+  assert.match(styleSkill, /style_submit_purchase_visual_observations/);
+  assert.match(styleSkill, /style_render_purchase_analysis/);
+  assert.doesNotMatch(styleSkill, /Treat purchase analysis as a two-step flow/i);
+
+  assert.match(releaseChecklist, /compatibility floor/);
+  assert.match(releaseChecklist, /current reference Fluent MCP contract version matches the canonical Fluent MCP contract/);
 });
 
 test('contract version comparison treats newer Fluent contracts as compatible', () => {

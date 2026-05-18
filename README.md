@@ -16,7 +16,7 @@ The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is not 
 - plugin-managed hosted auth: beta
 - setup command labels: `cloud` and `oss`
 - minimum compatible Fluent MCP contract version: `2026-04-20.fluent-core-v1.37`
-- current reference Fluent MCP contract version: `2026-05-12.fluent-core-v1.66`
+- current reference Fluent MCP contract version: `2026-05-17.fluent-core-v1.84`
 - packaging decision: standalone `fluent-openclaw` is the canonical published package; the `fluent-oss` embedded bundle is a separate OSS helper
 
 ## Install
@@ -90,8 +90,9 @@ openclaw fluent doctor oss --base-url http://127.0.0.1:8788 --token <oss-token>
 
 Practical guidance:
 
-- OpenClaw supports the same Fluent meals, grocery, health, and style capabilities as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
-- The package currently keeps `2026-04-20.fluent-core-v1.37` as its minimum compatible contract while using `2026-05-12.fluent-core-v1.66` as the current reference contract.
+- Fluent keeps the same memory and tools across clients. Each assistant may present them differently.
+- OpenClaw supports the same Fluent meals, grocery, health, and style memory/tools as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
+- The package currently keeps `2026-04-20.fluent-core-v1.37` as its minimum compatible contract while using `2026-05-17.fluent-core-v1.84` as the current reference contract.
 - ChatGPT is the strongest Fluent host for the first submitted rich app experience: Fluent Home, recipe cards, grocery lists, Style purchase analysis, Health routines, and account status.
 - Claude, Codex, OpenClaw, and generic MCP clients should use Fluent's tools and complete text-first answers unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved memory and let the host present the results conversationally.

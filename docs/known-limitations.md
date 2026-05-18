@@ -33,4 +33,4 @@ These limits are part of the supported `v0.1.6` public beta release.
 - The package targets Node.js `22+`.
 - The package expects OpenClaw plugin API `2026.3.24-beta.2` or newer.
 - The minimum compatible Fluent MCP contract version is `2026-04-20.fluent-core-v1.37`.
-- The current reference Fluent MCP contract version is `2026-05-12.fluent-core-v1.66`.
+- The current reference Fluent MCP contract version is `2026-05-17.fluent-core-v1.84`.

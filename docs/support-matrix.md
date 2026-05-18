@@ -20,9 +20,10 @@ This matrix documents what the public `fluent-openclaw` package supports compare
 
 ## Exact Positioning
 
+- Fluent keeps the same memory and tools across clients. Each assistant may present them differently.
 - OpenClaw supports the same stable Fluent contract as the other clients, but its package value is native plugin packaging, Fluent skills, hosted auth helpers, and MCP binding commands.
-- OpenClaw keeps `2026-04-20.fluent-core-v1.37` as the minimum compatible Fluent MCP contract and treats `2026-05-12.fluent-core-v1.66` as the current reference contract.
-- ChatGPT is the Fluent host with the richest first-party widget support today. The first submitted app experience focuses on Fluent Home, recipe cards, grocery lists, Style purchase analysis, Health routines, and account status.
+- OpenClaw keeps `2026-04-20.fluent-core-v1.37` as the minimum compatible Fluent MCP contract and treats `2026-05-17.fluent-core-v1.84` as the current reference contract.
+- ChatGPT is the Fluent host with the richest first-party widget support today. The first submitted app experience focuses on Home, recipe cards, grocery lists, Style purchase analysis, Health routines, and account status.
 - Claude, Codex, OpenClaw, and generic MCP clients support Fluent as text-first clients. They should use the same saved memory and complete answers without relying on Fluent widgets unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be positioned as a text-first Fluent host with a native package, not as a widget-first host.
 
