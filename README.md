@@ -86,14 +86,14 @@ openclaw fluent doctor oss --base-url http://127.0.0.1:8788 --token <oss-token>
 | Open-source MCP binding helper in this package | Yes | No | No | Yes | Manual config |
 | Rich Fluent app views | No | Yes | No | No | Only if the host explicitly supports MCP Apps-style widgets |
 | Text-first Fluent workflows | Yes | Yes | Yes | Yes | Yes |
-| First submitted Fluent app widgets | No | Home, recipe cards, grocery lists, and purchase analysis | No | No | Only if the host explicitly supports MCP Apps-style widgets |
+| Current Fluent app widgets | No | Home, recipe cards, grocery lists, and purchase analysis | No | No | Only if the host explicitly supports MCP Apps-style widgets |
 
 Practical guidance:
 
 - Fluent keeps the same memory and tools across clients. Each assistant may present them differently.
 - OpenClaw supports the same Fluent meals, grocery, health, and style memory/tools as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
 - The package currently keeps `2026-04-20.fluent-core-v1.37` as its minimum compatible contract while using `2026-05-17.fluent-core-v1.84` as the current reference contract.
-- ChatGPT is the strongest Fluent host for the first submitted rich app experience: Fluent Home, recipe cards, grocery lists, Style purchase analysis, Health routines, and account status.
+- ChatGPT is the strongest Fluent host for the current rich app experience: Fluent Home, recipe cards, grocery lists, Style purchase analysis, Health routines, and account status.
 - Claude, Codex, OpenClaw, and generic MCP clients should use Fluent's tools and complete text-first answers unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved memory and let the host present the results conversationally.
 
