@@ -45,9 +45,9 @@ test('README documents the public install and intentional omissions', async () =
   assert.match(readme, /public beta/i);
   assert.match(readme, /openclaw plugins install fluent-openclaw/);
   assert.match(readme, /canonical public source/i);
-  assert.match(readme, /not the same artifact/i);
-  assert.match(readme, /separate bundled OSS helper package/i);
-  assert.match(readme, /Neither package line is generated from the other/i);
+  assert.match(readme, /separate OSS helper package/i);
+  assert.match(readme, /its own metadata and versioning/i);
+  assert.match(readme, /neither package line is generated from the other/i);
   assert.match(readme, /openclaw fluent mcp --track cloud/);
   assert.match(readme, /openclaw fluent mcp --track oss --base-url http:\/\/127\.0\.0\.1:8788 --token <oss-token>/);
   assert.match(readme, /browser and retailer execution helpers are intentionally omitted/i);
