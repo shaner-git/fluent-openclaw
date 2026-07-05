@@ -10,7 +10,7 @@ These limits are part of the supported `v0.1.7` public beta release.
 
 ## OpenClaw Surface
 
-- OpenClaw can use Fluent's canonical public vNext tools and promoted MCP resources for Meals and Style context, but Health/Wellbeing is reserved and not an active public product surface.
+- OpenClaw can use Fluent's canonical public tools and promoted MCP resources for Meals and Style context, but Health/Wellbeing is reserved and not an active public product surface.
 - OpenClaw should use Fluent's saved memory, currentness, evidence, and media context through text-first answers rather than expecting Fluent-owned visual cards.
 - The package ships Fluent skills and setup helpers, not a separate first-party Fluent UI.
 

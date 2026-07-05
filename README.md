@@ -79,8 +79,8 @@ openclaw fluent doctor --track oss --base-url http://127.0.0.1:8788 --token <oss
 
 | Capability | OpenClaw | ChatGPT | Claude | Codex | generic MCP clients |
 |---|---|---|---|---|---|
-| Fluent MCP public vNext tools | Yes | Yes | Yes | Yes | Yes |
-| Fluent MCP public vNext resources | Yes | Yes | Yes | Yes | Yes |
+| Fluent MCP public tools | Yes | Yes | Yes | Yes | Yes |
+| Fluent MCP public resources | Yes | Yes | Yes | Yes | Yes |
 | Native packaged Fluent client plugin | Yes | No | No | Yes | No |
 | Bundled Fluent skills and routing hints | Yes | No | No | Yes | No |
 | Plugin-managed hosted auth helper in this package | Yes | No | No | No | No |
@@ -94,7 +94,7 @@ Practical guidance:
 - Fluent keeps the same memory and tools across clients. Each assistant may present them differently.
 - OpenClaw supports the same canonical public Fluent `/mcp` profile as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
 - The package currently keeps `2026-06-01.fluent-core-v1.85` as its minimum compatible and current reference contract.
-- The current public vNext profile is text/data first by default: 26 tools, 10 resources, and only the promoted grocery-list, Budgets Envelope Setup, and Style Closet Manager widget families.
+- The current public profile is text/data first by default: 26 tools, 10 resources, and only the promoted grocery-list, Budgets Envelope Setup, and Style Closet Manager widget families.
 - Health/Wellbeing is reserved and not an active public product surface in this package.
 - Claude, Codex, OpenClaw, and generic MCP clients should use Fluent's tools and complete text-first answers unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved memory and let the host present the results conversationally.
