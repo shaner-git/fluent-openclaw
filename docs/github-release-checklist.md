@@ -1,6 +1,6 @@
 # Fluent OpenClaw GitHub Release Checklist
 
-Use this checklist when cutting a public package release such as `v0.1.6`.
+Use this checklist when cutting a public package release such as `v0.1.7`.
 
 ## Before Tagging
 
@@ -22,8 +22,8 @@ Use this checklist when cutting a public package release such as `v0.1.6`.
 - run `npm run build`
 - run `openclaw plugins install fluent-openclaw`
 - run `openclaw fluent doctor`
-- run `openclaw fluent mcp cloud`
-- run `openclaw fluent mcp oss --base-url http://127.0.0.1:8788`
+- run `openclaw fluent mcp --track cloud`
+- run `openclaw fluent mcp --track oss --base-url http://127.0.0.1:8788`
 - verify no release-facing doc implies that `fluent-oss/openclaw-plugin/fluent` is the same package artifact
 
 ## Release Notes
@@ -36,13 +36,13 @@ Use this checklist when cutting a public package release such as `v0.1.6`.
 
 ## Publish
 
-- create tag `v0.1.6`
+- create tag `v0.1.7`
 - publish the package release to GitHub
-- use [docs/releases/v0.1.6.md](./releases/v0.1.6.md) as the release body
+- use [docs/releases/v0.1.7.md](./releases/v0.1.7.md) as the release body
 - verify README links and docs links render correctly on GitHub
 
 ## After Publish
 
-- confirm the public package metadata shows `0.1.6`
+- confirm the public package metadata shows `0.1.7`
 - confirm the install command works from a clean OpenClaw environment
 - confirm the package docs still match the live command behavior

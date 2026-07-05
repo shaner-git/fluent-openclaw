@@ -1,6 +1,6 @@
 # Fluent for OpenClaw
 
-Fluent adds meal planning, grocery workflows, health routines, and closet-aware style help to OpenClaw.
+Fluent helps OpenClaw remember what fits your life across Meals and Style without turning Fluent into the planner, stylist, browser, or checkout agent.
 
 This repository is the canonical public source for the published `fluent-openclaw` package.
 
@@ -10,13 +10,13 @@ The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is not 
 
 `fluent-openclaw` is now a public beta release.
 
-- package version: `0.1.6`
+- package version: `0.1.7`
 - install surface: public
 - Fluent early access: invite-based and currently free
 - plugin-managed hosted auth: beta
 - setup command labels: `cloud` and `oss`
-- minimum compatible Fluent MCP contract version: `2026-04-20.fluent-core-v1.37`
-- current reference Fluent MCP contract version: `2026-05-17.fluent-core-v1.84`
+- minimum compatible Fluent MCP contract version: `2026-06-01.fluent-core-v1.85`
+- current reference Fluent MCP contract version: `2026-06-01.fluent-core-v1.85`
 - packaging decision: standalone `fluent-openclaw` is the canonical published package; the `fluent-oss` embedded bundle is a separate OSS helper
 
 ## Install
@@ -42,7 +42,7 @@ For both managed early access and self-hosted use, the supported public OpenClaw
 1. Install `fluent-openclaw`.
 2. Run `openclaw fluent auth login`.
 3. Open the printed URL in your browser and finish sign-in.
-4. Bind Fluent early access into OpenClaw with `openclaw fluent mcp cloud`.
+4. Bind Fluent early access into OpenClaw with `openclaw fluent mcp --track cloud`.
 5. Confirm the connection with `openclaw fluent doctor`.
 
 ## Run Fluent Yourself
@@ -51,13 +51,13 @@ For both managed early access and self-hosted use, the supported public OpenClaw
 2. Bind Fluent open-source runtime into OpenClaw:
 
 ```bash
-openclaw fluent mcp oss --base-url http://127.0.0.1:8788 --token <oss-token>
+openclaw fluent mcp --track oss --base-url http://127.0.0.1:8788 --token <oss-token>
 ```
 
 3. Confirm the connection with:
 
 ```bash
-openclaw fluent doctor oss --base-url http://127.0.0.1:8788 --token <oss-token>
+openclaw fluent doctor --track oss --base-url http://127.0.0.1:8788 --token <oss-token>
 ```
 
 4. Start a fresh OpenClaw session so it reloads the updated MCP registry.
@@ -68,8 +68,8 @@ openclaw fluent doctor oss --base-url http://127.0.0.1:8788 --token <oss-token>
 - `openclaw fluent auth refresh`
 - `openclaw fluent auth status`
 - `openclaw fluent auth logout`
-- `openclaw fluent mcp cloud`
-- `openclaw fluent mcp oss --base-url http://127.0.0.1:8788 --token <oss-token>`
+- `openclaw fluent mcp --track cloud`
+- `openclaw fluent mcp --track oss --base-url http://127.0.0.1:8788 --token <oss-token>`
 - `openclaw fluent doctor`
 - `openclaw fluent deep-check`
 
@@ -79,21 +79,23 @@ openclaw fluent doctor oss --base-url http://127.0.0.1:8788 --token <oss-token>
 
 | Capability | OpenClaw | ChatGPT | Claude | Codex | generic MCP clients |
 |---|---|---|---|---|---|
-| Fluent MCP tools and resources | Yes | Yes | Yes | Yes | Yes |
+| Fluent MCP public vNext tools | Yes | Yes | Yes | Yes | Yes |
+| Fluent MCP public vNext resources | Yes | Yes | Yes | Yes | Yes |
 | Native packaged Fluent client plugin | Yes | No | No | Yes | No |
 | Bundled Fluent skills and routing hints | Yes | No | No | Yes | No |
 | Plugin-managed hosted auth helper in this package | Yes | No | No | No | No |
 | Open-source MCP binding helper in this package | Yes | No | No | Yes | Manual config |
-| Rich Fluent app views | No | Yes | No | No | Only if the host explicitly supports MCP Apps-style widgets |
+| Rich Fluent app views | Host-dependent for promoted surfaces only | Promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only |
 | Text-first Fluent workflows | Yes | Yes | Yes | Yes | Yes |
-| Current Fluent app widgets | No | Home, recipe cards, grocery lists, and purchase analysis | No | No | Only if the host explicitly supports MCP Apps-style widgets |
+| Current Fluent app widgets | Host-dependent for promoted surfaces only | Promoted grocery-list, budgets, and Style closet surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only |
 
 Practical guidance:
 
 - Fluent keeps the same memory and tools across clients. Each assistant may present them differently.
-- OpenClaw supports the same Fluent meals, grocery, health, and style memory/tools as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
-- The package currently keeps `2026-04-20.fluent-core-v1.37` as its minimum compatible contract while using `2026-05-17.fluent-core-v1.84` as the current reference contract.
-- ChatGPT is the strongest Fluent host for the current rich app experience: Fluent Home, recipe cards, grocery lists, Style purchase analysis, Health routines, and account status.
+- OpenClaw supports the same canonical public Fluent `/mcp` profile as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
+- The package currently keeps `2026-06-01.fluent-core-v1.85` as its minimum compatible and current reference contract.
+- The current public vNext profile is text/data first by default: 26 tools, 10 resources, and only the promoted grocery-list, Budgets Envelope Setup, and Style Closet Manager widget families.
+- Health/Wellbeing is reserved and not an active public product surface in this package.
 - Claude, Codex, OpenClaw, and generic MCP clients should use Fluent's tools and complete text-first answers unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved memory and let the host present the results conversationally.
 

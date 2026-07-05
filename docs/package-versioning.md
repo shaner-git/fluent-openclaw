@@ -24,5 +24,5 @@ The embedded helper is exported from `fluent-mcp/openclaw-plugin/fluent` into `f
 
 - keep the published OpenClaw package metadata in this repo authoritative for `fluent-openclaw`
 - keep the Fluent open-source runtime embedded helper metadata visibly distinct from `fluent-openclaw`
-- keep the minimum Fluent contract floor at `2026-04-20.fluent-core-v1.37` in both places
+- keep the minimum Fluent contract floor aligned to the current public vNext contract, currently `2026-06-01.fluent-core-v1.85`
 - for OpenClaw installs, direct users to `fluent-openclaw`; only mention the embedded OSS helper as a repo-local bundle or fallback helper

@@ -1,6 +1,6 @@
 # Fluent OpenClaw Known Limitations
 
-These limits are part of the supported `v0.1.6` public beta release.
+These limits are part of the supported `v0.1.7` public beta release.
 
 ## Release Scope
 
@@ -10,8 +10,8 @@ These limits are part of the supported `v0.1.6` public beta release.
 
 ## OpenClaw Surface
 
-- OpenClaw can use Fluent's meals, grocery, health, and style tools, but it does not render the Fluent widget surfaces used by ChatGPT-compatible MCP Apps hosts.
-- OpenClaw should use Fluent's saved memory for recipes, grocery plans, pantry state, and purchase analysis rather than expecting Fluent-owned visual cards.
+- OpenClaw can use Fluent's canonical public vNext tools and promoted MCP resources for Meals and Style context, but Health/Wellbeing is reserved and not an active public product surface.
+- OpenClaw should use Fluent's saved memory, currentness, evidence, and media context through text-first answers rather than expecting Fluent-owned visual cards.
 - The package ships Fluent skills and setup helpers, not a separate first-party Fluent UI.
 
 ## Auth And Setup
@@ -32,5 +32,5 @@ These limits are part of the supported `v0.1.6` public beta release.
 - The embedded `fluent-oss/openclaw-plugin/fluent` bundle is a separate OSS helper package exported from `fluent-mcp/openclaw-plugin/fluent` and should not be treated as the same release artifact.
 - The package targets Node.js `22+`.
 - The package expects OpenClaw plugin API `2026.3.24-beta.2` or newer.
-- The minimum compatible Fluent MCP contract version is `2026-04-20.fluent-core-v1.37`.
-- The current reference Fluent MCP contract version is `2026-05-17.fluent-core-v1.84`.
+- The minimum compatible Fluent MCP contract version is `2026-06-01.fluent-core-v1.85`.
+- The current reference Fluent MCP contract version is `2026-06-01.fluent-core-v1.85`.

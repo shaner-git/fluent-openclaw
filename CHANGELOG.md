@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v0.1.7 - 2026-07-05
+
+- Bumps the published `fluent-openclaw` package line to `0.1.7` for a fresh ClawHub release instead of republishing `0.1.6`.
+- Aligns the package with Fluent contract `2026-06-01.fluent-core-v1.85` for both the minimum compatible and current reference contract versions.
+- Refreshes the packaged OpenClaw skills from `fluent-mcp/openclaw-plugin/fluent`, including the current Meals planning, Style closet, Budgets, and visual-boundary guidance.
+- Updates hosted auth token exchange to request the canonical `/mcp` resource, keeps the hosted MCP URL at `https://mcp.meetfluent.app/mcp`, and narrows hosted scopes to the current public profile.
 - Replaces package-facing personal contact metadata with Fluent org-owned general, support, and security addresses in the public package manifest, README, and release notes.
 - Aligns the OpenClaw package relationship story with `fluent-mcp`: `fluent-openclaw` is the canonical published package, while the `fluent-oss` embedded bundle is a distinct helper exported from `fluent-mcp`.
 

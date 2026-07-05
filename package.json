@@ -1,6 +1,6 @@
 {
   "name": "fluent-openclaw",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "type": "module",
   "description": "Native OpenClaw plugin packaging for Fluent skills, managed auth, and MCP setup.",
@@ -22,7 +22,7 @@
   "keywords": [
     "fluent",
     "meals",
-    "health",
+    "wellbeing",
     "style",
     "openclaw",
     "plugin",
@@ -74,9 +74,9 @@
     "legacyBackendModes": ["hosted", "local"],
     "deploymentTracks": ["cloud", "oss"],
     "defaultDeploymentTrack": "cloud",
-    "minimumContractVersion": "2026-04-20.fluent-core-v1.37",
-    "currentReferenceContractVersion": "2026-05-17.fluent-core-v1.84",
-    "requiredHostedScopes": ["meals:read", "meals:write", "health:read", "health:write", "style:read", "style:write", "offline_access"],
+    "minimumContractVersion": "2026-06-01.fluent-core-v1.85",
+    "currentReferenceContractVersion": "2026-06-01.fluent-core-v1.85",
+    "requiredHostedScopes": ["meals:read", "meals:write", "style:read", "offline_access"],
     "pluginManagedAuth": true,
     "contacts": {
       "general": "hello@meetfluent.app",

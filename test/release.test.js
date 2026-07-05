@@ -14,8 +14,10 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
 test('package metadata is ready for the public beta release', async () => {
   const packageJson = JSON.parse(await readFile(path.join(rootDir, 'package.json'), 'utf8'));
+  const openclawPluginJson = JSON.parse(await readFile(path.join(rootDir, 'openclaw.plugin.json'), 'utf8'));
 
-  assert.equal(packageJson.version, '0.1.6');
+  assert.equal(packageJson.version, '0.1.7');
+  assert.equal(openclawPluginJson.version, '0.1.7');
   assert.equal(packageJson.author.email, 'hello@meetfluent.app');
   assert.equal(packageJson.bugs.email, 'hello@meetfluent.app');
   assert.equal(packageJson['x-fluent'].artifactKind, 'standalone-openclaw-package');
@@ -32,7 +34,7 @@ test('package metadata is ready for the public beta release', async () => {
   assert.equal(packageJson['x-fluent'].contacts.security, 'security@meetfluent.app');
   assert.equal(packageJson['x-fluent'].releaseChannel, FLUENT_RELEASE_CHANNEL);
   assert.equal(packageJson['x-fluent'].minimumContractVersion, FLUENT_MINIMUM_CONTRACT_VERSION);
-  assert.equal(packageJson['x-fluent'].currentReferenceContractVersion, '2026-05-17.fluent-core-v1.84');
+  assert.equal(packageJson['x-fluent'].currentReferenceContractVersion, '2026-06-01.fluent-core-v1.85');
   assert.equal(packageJson.scripts.test, 'node --test');
   assert.equal(packageJson.scripts.build, 'npm pack --dry-run');
 });
@@ -46,8 +48,8 @@ test('README documents the public install and intentional omissions', async () =
   assert.match(readme, /not the same artifact/i);
   assert.match(readme, /separate bundled OSS helper package/i);
   assert.match(readme, /Neither package line is generated from the other/i);
-  assert.match(readme, /openclaw fluent mcp cloud/);
-  assert.match(readme, /openclaw fluent mcp oss --base-url http:\/\/127\.0\.0\.1:8788 --token <oss-token>/);
+  assert.match(readme, /openclaw fluent mcp --track cloud/);
+  assert.match(readme, /openclaw fluent mcp --track oss --base-url http:\/\/127\.0\.0\.1:8788 --token <oss-token>/);
   assert.match(readme, /browser and retailer execution helpers are intentionally omitted/i);
   assert.match(readme, /hello@meetfluent\.app/);
   assert.match(readme, /Support: `hello@meetfluent\.app`/);
@@ -64,22 +66,22 @@ test('package versioning doc keeps the standalone and OSS helper artifacts disti
   assert.match(versioningDoc, /package source: `fluent-mcp\/openclaw-plugin\/fluent`/);
   assert.match(versioningDoc, /not the same artifact/i);
   assert.match(versioningDoc, /not generated from this repository/i);
-  assert.match(versioningDoc, /2026-04-20\.fluent-core-v1\.37/);
+  assert.match(versioningDoc, /2026-06-01\.fluent-core-v1\.85/);
 });
 
 test('GitHub release notes stay aligned and public-safe', async () => {
-  const releaseNotes = await readFile(path.join(rootDir, 'docs', 'releases', 'v0.1.6.md'), 'utf8');
+  const releaseNotes = await readFile(path.join(rootDir, 'docs', 'releases', 'v0.1.7.md'), 'utf8');
 
-  assert.match(releaseNotes, /Fluent for OpenClaw v0\.1\.6/);
+  assert.match(releaseNotes, /Fluent for OpenClaw v0\.1\.7/);
   assert.match(releaseNotes, /canonical public beta package/i);
-  assert.match(releaseNotes, /Minimum Fluent MCP contract: `2026-04-20\.fluent-core-v1\.37`/);
+  assert.match(releaseNotes, /Minimum Fluent MCP contract: `2026-06-01\.fluent-core-v1\.85`/);
   assert.match(releaseNotes, /openclaw plugins install fluent-openclaw/);
   assert.match(releaseNotes, /## Early-Access Setup/);
   assert.match(releaseNotes, /## Run Fluent Yourself/);
   assert.match(releaseNotes, /openclaw fluent doctor/);
   assert.match(releaseNotes, /openclaw fluent deep-check/);
-  assert.match(releaseNotes, /openclaw fluent mcp cloud/);
-  assert.match(releaseNotes, /openclaw fluent mcp oss --base-url http:\/\/127\.0\.0\.1:8788/);
+  assert.match(releaseNotes, /openclaw fluent mcp --track cloud/);
+  assert.match(releaseNotes, /openclaw fluent mcp --track oss --base-url http:\/\/127\.0\.0\.1:8788/);
   assert.match(releaseNotes, /hello@meetfluent\.app/);
   assert.match(releaseNotes, /Support: `hello@meetfluent\.app`/);
   assert.match(releaseNotes, /security@meetfluent\.app/);
@@ -97,16 +99,15 @@ test('OpenClaw skills stay text-first and current with staged onboarding guidanc
   const styleSkill = await readFile(path.join(rootDir, 'skills', 'fluent-style', 'SKILL.md'), 'utf8');
   const releaseChecklist = await readFile(path.join(rootDir, 'docs', 'github-release-checklist.md'), 'utf8');
 
-  assert.match(mealsSkill, /meals_get_onboarding_calibration/);
-  assert.match(mealsSkill, /prefer `meals_get_current_grocery_list` and answer in text/);
-  assert.match(mealsSkill, /Do not default to `meals_render_recipe_card` or `meals_render_grocery_list_v2` in OpenClaw/);
+  assert.match(mealsSkill, /fluent_get_context\(domain="meals", intent="planning"\)/);
+  assert.match(mealsSkill, /fluent_update_shared_profile_patch/);
+  assert.match(mealsSkill, /Do not use OpenClaw visualizer widgets, MCP Apps resources, or render adapters/);
   assert.doesNotMatch(mealsSkill, /prefer `meals_render_grocery_list_v2` as the default end-user experience/i);
 
-  assert.match(styleSkill, /style_get_onboarding_calibration/);
-  assert.match(styleSkill, /style_prepare_purchase_analysis/);
-  assert.match(styleSkill, /style_get_purchase_vision_packet/);
-  assert.match(styleSkill, /style_submit_purchase_visual_observations/);
-  assert.match(styleSkill, /style_render_purchase_analysis/);
+  assert.match(styleSkill, /fluent_get_context\(domain="style", intent="closet"\)/);
+  assert.match(styleSkill, /canonical public baseline is 26 tools with promoted grocery-list, budgets envelope setup, and Style closet manager widget resources only/);
+  assert.match(styleSkill, /Do not call, name as active guidance, or wait for old tools/);
+  assert.doesNotMatch(styleSkill, /style_show_purchase_analysis_widget` as the ChatGPT\/App SDK finish/i);
   assert.doesNotMatch(styleSkill, /Treat purchase analysis as a two-step flow/i);
 
   assert.match(releaseChecklist, /compatibility floor/);
@@ -114,9 +115,9 @@ test('OpenClaw skills stay text-first and current with staged onboarding guidanc
 });
 
 test('contract version comparison treats newer Fluent contracts as compatible', () => {
-  assert.equal(compareFluentContractVersions('2026-04-20.fluent-core-v1.37', '2026-04-20.fluent-core-v1.37'), 0);
-  assert.equal(compareFluentContractVersions('2026-04-21.fluent-core-v1.38', '2026-04-20.fluent-core-v1.37'), 1);
-  assert.equal(compareFluentContractVersions('2026-04-19.fluent-core-v1.36', '2026-04-20.fluent-core-v1.37'), -1);
+  assert.equal(compareFluentContractVersions('2026-06-01.fluent-core-v1.85', '2026-06-01.fluent-core-v1.85'), 0);
+  assert.equal(compareFluentContractVersions('2026-06-02.fluent-core-v1.86', '2026-06-01.fluent-core-v1.85'), 1);
+  assert.equal(compareFluentContractVersions('2026-05-31.fluent-core-v1.84', '2026-06-01.fluent-core-v1.85'), -1);
 });
 
 test('probe compatibility flags mismatched tracks and older contracts', () => {
@@ -124,7 +125,7 @@ test('probe compatibility flags mismatched tracks and older contracts', () => {
     minimumContractVersion: FLUENT_MINIMUM_CONTRACT_VERSION,
     probe: {
       contract: {
-        contractVersion: '2026-04-19.fluent-core-v1.36',
+        contractVersion: '2026-05-31.fluent-core-v1.84',
         tools: ['fluent_get_capabilities'],
       },
       deploymentTrack: 'cloud',
@@ -132,7 +133,7 @@ test('probe compatibility flags mismatched tracks and older contracts', () => {
     track: 'oss',
   });
 
-  assert.equal(compatibility.contractVersion, '2026-04-19.fluent-core-v1.36');
+  assert.equal(compatibility.contractVersion, '2026-05-31.fluent-core-v1.84');
   assert.match(compatibility.issues.join('\n'), /requested track is oss/i);
   assert.match(compatibility.issues.join('\n'), /older than the minimum supported/i);
 });
