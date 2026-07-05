@@ -1,10 +1,14 @@
 # Fluent for OpenClaw
 
-Fluent helps OpenClaw remember what fits your life across Meals and Style without turning Fluent into the planner, stylist, browser, or checkout agent.
+Fluent connects OpenClaw to a personal context layer you own: your kitchen, your closet, your budgets — the real state of your life, not a guess. Ask "what should I cook this week?" or "does this jacket fit what I own?" and your assistant answers from what's actually there.
 
-This repository is the canonical public source for the published `fluent-openclaw` package.
+You stay in control. Nothing is written without your explicit approval, every fact carries its source, and your data is yours to export or delete. Fluent holds the context; your assistant does the thinking — it won't shop, check out, or act on your accounts.
 
-The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is not the same artifact. It is a separate bundled OSS helper package exported from `fluent-mcp/openclaw-plugin/fluent`, with its own metadata and versioning. Neither package line is generated from the other.
+Works with the hosted Fluent service or your own self-hosted runtime. Free while in early access.
+
+---
+
+*This repository is the canonical public source for the published `fluent-openclaw` package. The embedded `openclaw-plugin/fluent` bundle shipped inside `fluent-oss` is a separate OSS helper package with its own metadata and versioning; neither package line is generated from the other.*
 
 ## Release Status
 
