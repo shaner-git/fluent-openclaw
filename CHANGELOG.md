@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## v0.1.8 - 2026-07-09
+
+- Aligns the package floor and reference contract to `2026-07-09.fluent-core-v2.0`: 26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters.
+- Adds the missing `style:write` scope to plugin-managed hosted OAuth so OpenClaw can use the current approved Style write surface.
+- Replaces invite-only and internal redesign-generation language with the current scoped self-serve early-access story.
+- Keeps Meals and Style as active public domains, Budgets as narrow envelope/spend context, and Health/Wellbeing as reserved.
+- Removes stale public references to retired Home, recipe-card, pantry-dashboard, setup, and purchase-analysis surfaces.
+- Removes the retired standalone visual-sync skill.
+
 ## v0.1.7 - 2026-07-05
 
 - Bumps the published `fluent-openclaw` package line to `0.1.7` for a fresh ClawHub release instead of republishing `0.1.6`.

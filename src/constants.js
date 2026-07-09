@@ -1,6 +1,6 @@
 export const FLUENT_PLUGIN_ID = 'fluent';
 export const FLUENT_SERVER_ID = 'fluent';
-export const FLUENT_MINIMUM_CONTRACT_VERSION = '2026-06-01.fluent-core-v1.85';
+export const FLUENT_MINIMUM_CONTRACT_VERSION = '2026-07-09.fluent-core-v2.0';
 export const FLUENT_RELEASE_CHANNEL = 'public-beta';
 export const DEFAULT_PROFILE_NAME = 'default';
 export const DEFAULT_WARN_BEFORE_EXPIRY_MINUTES = 10;
@@ -14,6 +14,7 @@ export const FLUENT_REQUIRED_HOSTED_SCOPES = [
   'meals:read',
   'meals:write',
   'style:read',
+  'style:write',
   'offline_access',
 ];
 export const FLUENT_REQUIRED_HOSTED_SCOPE = FLUENT_REQUIRED_HOSTED_SCOPES.join(' ');

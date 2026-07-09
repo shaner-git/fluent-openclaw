@@ -14,13 +14,15 @@ Works with the hosted Fluent service or your own self-hosted runtime. Free while
 
 `fluent-openclaw` is now a public beta release.
 
-- package version: `0.1.7`
+- package version: `0.1.8`
 - install surface: public
-- Fluent early access: invite-based and currently free
+- Fluent early access: scoped self-serve account creation when launch controls allow it, currently free
 - plugin-managed hosted auth: beta
 - setup command labels: `cloud` and `oss`
-- minimum compatible Fluent MCP contract version: `2026-06-01.fluent-core-v1.85`
-- current reference Fluent MCP contract version: `2026-06-01.fluent-core-v1.85`
+- minimum compatible Fluent MCP contract version: `2026-07-09.fluent-core-v2.0`
+- current reference Fluent MCP contract version: `2026-07-09.fluent-core-v2.0`
+- public profile: 26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters
+- required hosted scopes: `meals:read`, `meals:write`, `style:read`, `style:write`, `offline_access`
 - packaging decision: standalone `fluent-openclaw` is the canonical published package; the `fluent-oss` embedded bundle is a separate OSS helper
 
 ## Install
@@ -97,8 +99,8 @@ Practical guidance:
 
 - Fluent keeps the same memory and tools across clients. Each assistant may present them differently.
 - OpenClaw supports the same canonical public Fluent `/mcp` profile as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
-- The package currently keeps `2026-06-01.fluent-core-v1.85` as its minimum compatible and current reference contract.
-- The current public profile is text/data first by default: 26 tools, 10 resources, and only the promoted grocery-list, Budgets Envelope Setup, and Style Closet Manager widget families.
+- The package requires Fluent contract `2026-07-09.fluent-core-v2.0` as both its minimum compatible and current reference contract.
+- The current public profile is text/data first by default. It exposes Meals and Style, narrow `meals-groceries` and `style-clothing` budget context, and only the currently promoted grocery-list, Budgets Envelope Setup, and Style Closet Manager view families.
 - Health/Wellbeing is reserved and not an active public product surface in this package.
 - Claude, Codex, OpenClaw, and generic MCP clients should use Fluent's tools and complete text-first answers unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved memory and let the host present the results conversationally.
@@ -106,7 +108,7 @@ Practical guidance:
 ## Known Limitations
 
 - This package is public beta, not GA.
-- Fluent is invite-based early access and currently free, and plugin-managed hosted auth remains beta.
+- Fluent is scoped self-serve early access and currently free. Account creation can pause when launch controls or the current cohort cap require it, and plugin-managed hosted auth remains beta.
 - OpenClaw does not render Fluent rich app views today.
 - Open-source runtime setup still requires an explicit bearer token.
 - Browser and retailer execution helpers are intentionally omitted from the OpenClaw package.

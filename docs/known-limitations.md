@@ -1,12 +1,12 @@
 # Fluent OpenClaw Known Limitations
 
-These limits are part of the supported `v0.1.7` public beta release.
+These limits are part of the supported `v0.1.8` public beta release.
 
 ## Release Scope
 
 - `fluent-openclaw` is public beta, not GA.
-- Fluent is invite-based early access and currently free, and plugin-managed hosted auth remains beta.
-- Fluent early access is invite-based, and the open-source runtime is available if you want to run Fluent yourself.
+- Fluent is scoped self-serve early access and currently free. Account creation can pause when launch controls or the current cohort cap require it, and plugin-managed hosted auth remains beta.
+- The open-source runtime remains available without managed early-access eligibility if you want to run Fluent yourself.
 
 ## OpenClaw Surface
 
@@ -32,5 +32,6 @@ These limits are part of the supported `v0.1.7` public beta release.
 - The embedded `fluent-oss/openclaw-plugin/fluent` bundle is a separate OSS helper package exported from `fluent-mcp/openclaw-plugin/fluent` and should not be treated as the same release artifact.
 - The package targets Node.js `22+`.
 - The package expects OpenClaw plugin API `2026.3.24-beta.2` or newer.
-- The minimum compatible Fluent MCP contract version is `2026-06-01.fluent-core-v1.85`.
-- The current reference Fluent MCP contract version is `2026-06-01.fluent-core-v1.85`.
+- The minimum compatible Fluent MCP contract version is `2026-07-09.fluent-core-v2.0`.
+- The current reference Fluent MCP contract version is `2026-07-09.fluent-core-v2.0`.
+- The public profile contains 26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters.
