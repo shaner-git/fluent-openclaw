@@ -14,7 +14,7 @@ Works with the hosted Fluent service or your own self-hosted runtime. Free while
 
 `fluent-openclaw` is now a public beta release.
 
-- package version: `0.1.8`
+- package version: `0.1.9`
 - install surface: public
 - Fluent early access: scoped self-serve account creation when launch controls allow it, currently free
 - plugin-managed hosted auth: beta

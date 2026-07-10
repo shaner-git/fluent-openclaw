@@ -1,7 +1,7 @@
 {
   "id": "fluent",
   "name": "Fluent",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Fluent skills, managed auth, and MCP setup guidance for meals, style, and reserved wellbeing boundaries.",
   "skills": ["skills"],
   "configSchema": {

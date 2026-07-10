@@ -1,6 +1,6 @@
 # Fluent OpenClaw Known Limitations
 
-These limits are part of the supported `v0.1.8` public beta release.
+These limits are part of the supported `v0.1.9` public beta release.
 
 ## Release Scope
 

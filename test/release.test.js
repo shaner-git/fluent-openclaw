@@ -20,8 +20,8 @@ test('package metadata is ready for the public beta release', async () => {
   const packageJson = JSON.parse(await readFile(path.join(rootDir, 'package.json'), 'utf8'));
   const openclawPluginJson = JSON.parse(await readFile(path.join(rootDir, 'openclaw.plugin.json'), 'utf8'));
 
-  assert.equal(packageJson.version, '0.1.8');
-  assert.equal(openclawPluginJson.version, '0.1.8');
+  assert.equal(packageJson.version, '0.1.9');
+  assert.equal(openclawPluginJson.version, '0.1.9');
   assert.equal(packageJson.author.email, 'hello@meetfluent.app');
   assert.equal(packageJson.bugs.email, 'hello@meetfluent.app');
   assert.equal(packageJson['x-fluent'].artifactKind, 'standalone-openclaw-package');
@@ -79,14 +79,14 @@ test('package versioning doc keeps the standalone and OSS helper artifacts disti
 });
 
 test('GitHub release notes stay aligned and public-safe', async () => {
-  const releaseNotes = await readFile(path.join(rootDir, 'docs', 'releases', 'v0.1.8.md'), 'utf8');
+  const releaseNotes = await readFile(path.join(rootDir, 'docs', 'releases', 'v0.1.9.md'), 'utf8');
 
-  assert.match(releaseNotes, /Fluent for OpenClaw v0\.1\.8/);
+  assert.match(releaseNotes, /Fluent for OpenClaw v0\.1\.9/);
   assert.match(releaseNotes, /canonical public beta package/i);
   assert.match(releaseNotes, /Minimum Fluent MCP contract: `2026-07-09\.fluent-core-v2\.0`/);
   assert.match(releaseNotes, /26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters/);
   assert.match(releaseNotes, /`style:write`/);
-  assert.match(releaseNotes, /openclaw plugins install fluent-openclaw/);
+  assert.match(releaseNotes, /openclaw plugins install clawhub:fluent-openclaw/);
   assert.match(releaseNotes, /## Managed Early-Access Setup/);
   assert.match(releaseNotes, /## Run Fluent Yourself/);
   assert.match(releaseNotes, /openclaw fluent doctor/);

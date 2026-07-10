@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v0.1.9 - 2026-07-10
+
+- Publishes the corrected Fluent 2.0 package as a new immutable ClawHub version after the existing `v0.1.8` listing retained the previous `v0.1.7` README and contract metadata.
+- Keeps the package floor and reference contract at `2026-07-09.fluent-core-v2.0`: 26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters.
+- Includes `style:write`, scoped self-serve early-access language, current Meals/Style/Budgets boundaries, reserved Health/Wellbeing language, and removal of retired Home and Visual Sync guidance.
+
 ## v0.1.8 - 2026-07-09
 
 - Aligns the package floor and reference contract to `2026-07-09.fluent-core-v2.0`: 26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters.
