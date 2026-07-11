@@ -6,14 +6,14 @@
 
 - Publishes the corrected Fluent 2.0 package as a new immutable ClawHub version after the existing `v0.1.8` listing retained the previous `v0.1.7` README and contract metadata.
 - Keeps the package floor and reference contract at `2026-07-09.fluent-core-v2.0`: 26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters.
-- Includes `style:write`, scoped self-serve early-access language, current Meals/Style/Budgets boundaries, reserved Health/Wellbeing language, and removal of retired Home and Visual Sync guidance.
+- Includes `style:write`, scoped self-serve early-access language, current Meals/Style/Budgets guidance, and removal of retired Home and Visual Sync guidance.
 
 ## v0.1.8 - 2026-07-09
 
 - Aligns the package floor and reference contract to `2026-07-09.fluent-core-v2.0`: 26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters.
 - Adds the missing `style:write` scope to plugin-managed hosted OAuth so OpenClaw can use the current approved Style write surface.
 - Replaces invite-only and internal redesign-generation language with the current scoped self-serve early-access story.
-- Keeps Meals and Style as active public domains, Budgets as narrow envelope/spend context, and Health/Wellbeing as reserved.
+- Keeps Meals and Style as active public domains and Budgets as narrow envelope/spend context.
 - Removes stale public references to retired Home, recipe-card, pantry-dashboard, setup, and purchase-analysis surfaces.
 - Removes the retired standalone visual-sync skill.
 

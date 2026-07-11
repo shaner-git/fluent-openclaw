@@ -107,14 +107,16 @@ test('GitHub release notes stay aligned and public-safe', async () => {
 
 test('OpenClaw skills stay text-first and current with staged onboarding guidance', async () => {
   const coreSkill = await readFile(path.join(rootDir, 'skills', 'fluent-core', 'SKILL.md'), 'utf8');
-  const healthSkill = await readFile(path.join(rootDir, 'skills', 'fluent-health', 'SKILL.md'), 'utf8');
   const mealsSkill = await readFile(path.join(rootDir, 'skills', 'fluent-meals', 'SKILL.md'), 'utf8');
   const styleSkill = await readFile(path.join(rootDir, 'skills', 'fluent-style', 'SKILL.md'), 'utf8');
   const releaseChecklist = await readFile(path.join(rootDir, 'docs', 'github-release-checklist.md'), 'utf8');
 
   assert.match(coreSkill, /26 tools, 14 explicit writes, 3 render adapters, and 3 resources/);
-  assert.match(coreSkill, /There is no full, candidate, legacy, or compatibility route/);
-  assert.match(healthSkill, /public contract has no Health tools or resources/);
+  assert.match(coreSkill, /Keep user-facing answers centered on the current Meals, Style, and focused budget tools/);
+  await assert.rejects(
+    readFile(path.join(rootDir, 'skills', 'fluent-health', 'SKILL.md'), 'utf8'),
+    /ENOENT/,
+  );
   assert.match(mealsSkill, /fluent_get_context\(domain="meals", intent="planning"/);
   assert.match(mealsSkill, /fluent_update_shared_profile_patch/);
   assert.match(mealsSkill, /fluent_render_surface\(surface="meals_grocery_list"\)/);

@@ -7,7 +7,7 @@
   "author": {
     "name": "Fluent",
     "email": "hello@meetfluent.app",
-    "url": "https://mcp.meetfluent.app"
+    "url": "https://meetfluent.app"
   },
   "homepage": "https://github.com/shaner-git/fluent-docs/blob/main/guides/connecting-to-openclaw.md",
   "repository": {
@@ -22,7 +22,6 @@
   "keywords": [
     "fluent",
     "meals",
-    "wellbeing",
     "style",
     "openclaw",
     "plugin",

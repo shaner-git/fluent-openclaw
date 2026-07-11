@@ -5,12 +5,12 @@ These limits are part of the supported `v0.1.9` public beta release.
 ## Release Scope
 
 - `fluent-openclaw` is public beta, not GA.
-- Managed Fluent is free during early access in the United States, Canada, and Mexico. Plugin-managed hosted authentication remains beta.
+- Managed Fluent is free during early access. Plugin-managed hosted authentication remains beta.
 - The open-source version is available to anyone who wants to run Fluent themselves.
 
 ## OpenClaw Surface
 
-- OpenClaw can use Fluent for Meals and Style. Health features are not currently offered.
+- OpenClaw can use the current Fluent experience for Meals and Style, with manual grocery and clothing budget envelopes.
 - OpenClaw should use Fluent's saved memory, currentness, evidence, and media context through text-first answers rather than expecting Fluent-owned visual cards.
 - The package ships Fluent skills and setup helpers, not a separate first-party Fluent UI.
 

@@ -16,7 +16,7 @@ Works with the hosted Fluent service or your own self-hosted runtime. Free while
 
 - package version: `0.1.9`
 - install surface: public
-- Managed Fluent: free during early access in the United States, Canada, and Mexico
+- Managed Fluent: free during early access
 - plugin-managed hosted auth: beta
 - setup command labels: `cloud` and `oss`
 - minimum compatible Fluent MCP contract version: `2026-07-09.fluent-core-v2.0`
@@ -87,8 +87,8 @@ openclaw fluent doctor --track oss --base-url http://127.0.0.1:8788 --token <oss
 |---|---|---|---|---|---|
 | Fluent MCP public tools | Yes | Yes | Yes | Yes | Yes |
 | Fluent MCP public resources | Yes | Yes | Yes | Yes | Yes |
-| Native packaged Fluent client plugin | Yes | No | No | Yes | No |
-| Bundled Fluent skills and routing hints | Yes | No | No | Yes | No |
+| OpenAI plugin installation shared by ChatGPT and Codex | — | Yes | — | Yes | — |
+| Local client bundle with Fluent skills and routing hints | Yes | — | — | Yes | — |
 | Plugin-managed hosted auth helper in this package | Yes | No | No | No | No |
 | Open-source MCP binding helper in this package | Yes | No | No | Yes | Manual config |
 | Rich Fluent app views | Host-dependent for promoted surfaces only | Promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only |
@@ -98,18 +98,19 @@ openclaw fluent doctor --track oss --base-url http://127.0.0.1:8788 --token <oss
 Practical guidance:
 
 - Fluent keeps the same memory and tools across clients. Each assistant may present them differently.
+- ChatGPT and Codex share one OpenAI plugin installation.
 - OpenClaw supports the same canonical public Fluent `/mcp` profile as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
 - The package requires Fluent contract `2026-07-09.fluent-core-v2.0` as both its minimum compatible and current reference contract.
 - Fluent always works in text. Compatible apps can also show Grocery List, Budget Setup, and Style Closet Manager views.
-- Health features are not currently offered.
+- The current Fluent experience centers on Meals and Style, with manual grocery and clothing budget envelopes.
 - Claude, Codex, OpenClaw, and generic MCP clients should use Fluent's tools and complete text-first answers unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved memory and let the host present the results conversationally.
 
 ## Known Limitations
 
 - This package is public beta, not GA.
-- Managed Fluent is free during early access in the United States, Canada, and Mexico. Plugin-managed hosted authentication remains beta.
-- OpenClaw does not render Fluent rich app views today.
+- Managed Fluent is free during early access. Plugin-managed hosted authentication remains beta.
+- OpenClaw currently uses Fluent's complete text responses; rich views depend on host support.
 - Open-source runtime setup still requires an explicit bearer token.
 - Browser and retailer execution helpers are intentionally omitted from the OpenClaw package.
 - Unsafe local browser automation and retailer checkout scripts are not part of this plugin and are not required for standard installs.
