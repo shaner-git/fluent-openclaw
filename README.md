@@ -16,7 +16,7 @@ Works with the hosted Fluent service or your own self-hosted runtime. Free while
 
 - package version: `0.1.9`
 - install surface: public
-- Fluent early access: scoped self-serve account creation when launch controls allow it, currently free
+- Managed Fluent: free during early access in the United States, Canada, and Mexico
 - plugin-managed hosted auth: beta
 - setup command labels: `cloud` and `oss`
 - minimum compatible Fluent MCP contract version: `2026-07-09.fluent-core-v2.0`
@@ -100,15 +100,15 @@ Practical guidance:
 - Fluent keeps the same memory and tools across clients. Each assistant may present them differently.
 - OpenClaw supports the same canonical public Fluent `/mcp` profile as ChatGPT, Claude, Codex, and generic MCP clients, plus a native plugin package with Fluent skills, auth helpers, and MCP setup commands.
 - The package requires Fluent contract `2026-07-09.fluent-core-v2.0` as both its minimum compatible and current reference contract.
-- The current public profile is text/data first by default. It exposes Meals and Style, narrow `meals-groceries` and `style-clothing` budget context, and only the currently promoted grocery-list, Budgets Envelope Setup, and Style Closet Manager view families.
-- Health/Wellbeing is reserved and not an active public product surface in this package.
+- Fluent always works in text. Compatible apps can also show Grocery List, Budget Setup, and Style Closet Manager views.
+- Health features are not currently offered.
 - Claude, Codex, OpenClaw, and generic MCP clients should use Fluent's tools and complete text-first answers unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be treated like Claude and Codex for Fluent UI expectations: use Fluent's saved memory and let the host present the results conversationally.
 
 ## Known Limitations
 
 - This package is public beta, not GA.
-- Fluent is scoped self-serve early access and currently free. Account creation can pause when launch controls or the current cohort cap require it, and plugin-managed hosted auth remains beta.
+- Managed Fluent is free during early access in the United States, Canada, and Mexico. Plugin-managed hosted authentication remains beta.
 - OpenClaw does not render Fluent rich app views today.
 - Open-source runtime setup still requires an explicit bearer token.
 - Browser and retailer execution helpers are intentionally omitted from the OpenClaw package.

@@ -5,19 +5,19 @@ These limits are part of the supported `v0.1.9` public beta release.
 ## Release Scope
 
 - `fluent-openclaw` is public beta, not GA.
-- Fluent is scoped self-serve early access and currently free. Account creation can pause when launch controls or the current cohort cap require it, and plugin-managed hosted auth remains beta.
-- The open-source runtime remains available without managed early-access eligibility if you want to run Fluent yourself.
+- Managed Fluent is free during early access in the United States, Canada, and Mexico. Plugin-managed hosted authentication remains beta.
+- The open-source version is available to anyone who wants to run Fluent themselves.
 
 ## OpenClaw Surface
 
-- OpenClaw can use Fluent's canonical public tools and promoted MCP resources for Meals and Style context, but Health/Wellbeing is reserved and not an active public product surface.
+- OpenClaw can use Fluent for Meals and Style. Health features are not currently offered.
 - OpenClaw should use Fluent's saved memory, currentness, evidence, and media context through text-first answers rather than expecting Fluent-owned visual cards.
 - The package ships Fluent skills and setup helpers, not a separate first-party Fluent UI.
 
 ## Auth And Setup
 
 - Open-source runtime setup still requires a bearer token for `/mcp`.
-- Plugin-managed hosted auth depends on Fluent managed early-access eligibility and the active OAuth grant carrying the required Fluent scopes.
+- Plugin-managed hosted authentication requires a managed Fluent account and an active OAuth grant with the required permissions.
 - `openclaw fluent doctor` verifies local binding and the live compatibility probe, but it does not replace a full end-to-end interactive prompt check inside OpenClaw.
 
 ## Intentional Omissions

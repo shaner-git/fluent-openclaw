@@ -23,8 +23,8 @@ This matrix documents what the public `fluent-openclaw` package supports compare
 - OpenClaw supports the same stable Fluent contract as the other clients, but its package value is native plugin packaging, Fluent skills, hosted auth helpers, and MCP binding commands.
 - OpenClaw keeps `2026-07-09.fluent-core-v2.0` as the minimum compatible and current reference Fluent MCP contract.
 - The shared profile contains exactly 26 tools, 3 resources, 14 explicit writes, and 3 optional render adapters.
-- The current public profile uses one canonical `/mcp` endpoint. Meals and Style are active, Budgets is limited to declared `meals-groceries` and `style-clothing` envelope/spend context, and Health/Wellbeing is reserved.
-- The only promoted view families are Grocery List, Budgets Envelope Setup, and Style Closet Manager. Other historical views are not current product surfaces.
+- Fluent uses one `/mcp` endpoint. Meals and Style are available, Budgets can track user-provided grocery and clothing amounts, and Health features are not currently offered.
+- Compatible apps can show Grocery List, Budget Setup, and Style Closet Manager views. Every supported app can return the same information as text.
 - Claude, Codex, OpenClaw, and generic MCP clients support Fluent as text-first clients by default. They should use the same saved memory and complete answers without relying on Fluent widgets unless the host explicitly proves MCP Apps-style widget support.
 - OpenClaw should be positioned as a text-first Fluent host with a native package, not as a widget-first host.
 
