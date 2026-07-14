@@ -4,7 +4,7 @@ Fluent connects OpenClaw to a personal context layer you own: your kitchen, your
 
 You stay in control. Nothing is written without your explicit approval, every fact carries its source, and your data is yours to export or delete. Fluent holds the context; your assistant does the thinking — it won't shop, check out, or act on your accounts.
 
-Works with the hosted Fluent service or your own self-hosted runtime. Free while in early access.
+Works with Fluent at meetfluent.app or your own self-hosted runtime. You can use Fluent at meetfluent.app for free.
 
 ---
 
@@ -16,7 +16,7 @@ Works with the hosted Fluent service or your own self-hosted runtime. Free while
 
 - package version: `0.1.9`
 - install surface: public
-- Managed Fluent: free during early access
+- Fluent at meetfluent.app: free to use
 - plugin-managed hosted auth: beta
 - setup command labels: `cloud` and `oss`
 - minimum compatible Fluent MCP contract version: `2026-07-09.fluent-core-v2.0`
@@ -41,14 +41,14 @@ openclaw plugins install .
 
 The package targets Node.js `22+` and OpenClaw plugin API `2026.3.24-beta.2` or newer.
 
-For both managed early access and self-hosted use, the supported public OpenClaw install surface is still `fluent-openclaw`. Do not treat `fluent-oss/openclaw-plugin/fluent` as the same package release line.
+For both Fluent at meetfluent.app and self-hosted use, the supported public OpenClaw install surface is still `fluent-openclaw`. Do not treat `fluent-oss/openclaw-plugin/fluent` as the same package release line.
 
 ## Early-Access Setup
 
 1. Install `fluent-openclaw`.
 2. Run `openclaw fluent auth login`.
 3. Open the printed URL in your browser and finish sign-in.
-4. Bind Fluent early access into OpenClaw with `openclaw fluent mcp --track cloud`.
+4. Connect your Fluent account with `openclaw fluent mcp --track cloud`.
 5. Confirm the connection with `openclaw fluent doctor`.
 
 ## Run Fluent Yourself
@@ -109,7 +109,7 @@ Practical guidance:
 ## Known Limitations
 
 - This package is public beta, not GA.
-- Managed Fluent is free during early access. Plugin-managed hosted authentication remains beta.
+- Fluent at meetfluent.app is free to use. OpenClaw's hosted authentication remains beta.
 - OpenClaw currently uses Fluent's complete text responses; rich views depend on host support.
 - Open-source runtime setup still requires an explicit bearer token.
 - Browser and retailer execution helpers are intentionally omitted from the OpenClaw package.
@@ -134,7 +134,7 @@ Practical guidance:
 
 ## Notes
 
-- Fluent early access is the managed path; the open-source runtime is available when you want to run Fluent yourself.
+- Fluent at meetfluent.app is the simplest path; the open-source runtime is available when you want to run Fluent yourself.
 - The plugin manages hosted auth and rewrites `mcp.servers.fluent` for OpenClaw.
 - The bundled `openclaw-plugin/fluent` copy inside `fluent-oss` is an OSS helper package, not the published `fluent-openclaw` artifact.
 - Browser and retailer execution helpers are intentionally excluded so normal installs do not require unsafe-install overrides.
