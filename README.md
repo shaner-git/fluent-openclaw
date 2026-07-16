@@ -2,7 +2,7 @@
 
 **Make your AI fluent in what matters.**
 
-Fluent works inside OpenClaw and brings in the information relevant to each question. A clothing purchase can draw on your closet and clothing budget. A meal plan can draw on your tastes, grocery needs, and grocery spending. OpenClaw handles the conversation and recommendation.
+Fluent works inside OpenClaw, bringing in the information that matters for each question. A clothing purchase can draw on your closet and clothing budget. A meal plan can draw on your tastes and preferences, current grocery needs, and grocery spending. The AI app handles the conversation and recommendation.
 
 You choose what is saved and approve changes. Fluent also supports export and account deletion. Use managed Fluent or run the open-source runtime yourself. Fluent is free to use.
 

@@ -51,6 +51,11 @@ test('package metadata is ready for the public beta release', async () => {
 test('README documents the public install and intentional omissions', async () => {
   const readme = await readFile(path.join(rootDir, 'README.md'), 'utf8');
 
+  assert.match(readme, /Make your AI fluent in what matters\./);
+  assert.match(readme, /bringing in the information that matters for each question/);
+  assert.match(readme, /A clothing purchase can draw on your closet and clothing budget\./);
+  assert.match(readme, /A meal plan can draw on your tastes and preferences, current grocery needs, and grocery spending\./);
+  assert.match(readme, /The AI app handles the conversation and recommendation\./);
   assert.match(readme, /public beta/i);
   assert.match(readme, /openclaw plugins install fluent-openclaw/);
   assert.match(readme, /canonical public source/i);
