@@ -8,7 +8,7 @@ This matrix documents what the public `fluent-openclaw` package supports compare
 | Fluent MCP resources | Yes | Yes | Yes | Yes | Yes |
 | OpenAI plugin installation shared by ChatGPT and Codex | — | Yes | — | Yes | — |
 | Local client bundle with Fluent skills | Yes | — | — | Yes | — |
-| Plugin-managed hosted auth helper in this package | Yes | No | No | No | No |
+| Hosted auth helper in this package | Yes | No | No | No | No |
 | Open-source MCP binding helper in this package | Yes | No | No | Yes | Manual config |
 | Fluent MCP widget surfaces | Host-dependent for promoted surfaces only | Promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only |
 | ChatGPT-style rich app views | Host-dependent for promoted surfaces only | Promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only |

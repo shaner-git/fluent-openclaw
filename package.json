@@ -3,7 +3,7 @@
   "version": "0.1.9",
   "private": false,
   "type": "module",
-  "description": "Native OpenClaw plugin packaging for Fluent skills, managed auth, and MCP setup.",
+  "description": "Native OpenClaw plugin packaging for Fluent skills, hosted auth, and MCP setup.",
   "author": {
     "name": "Fluent",
     "email": "hello@meetfluent.app",

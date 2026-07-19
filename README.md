@@ -4,7 +4,7 @@
 
 Fluent works inside OpenClaw, bringing in the information that matters for each question. A clothing purchase can draw on your closet and clothing budget. A meal plan can draw on your tastes and preferences, current grocery needs, and grocery spending. The AI app handles the conversation and recommendation.
 
-You choose what is saved and approve changes. Fluent also supports export and account deletion. Use managed Fluent or run the open-source runtime yourself. Fluent is free to use.
+You choose what is saved and approve changes. Fluent also supports export and account deletion. Use Fluent online or run the open-source runtime yourself. There's no charge right now.
 
 ---
 
@@ -16,8 +16,8 @@ You choose what is saved and approve changes. Fluent also supports export and ac
 
 - package version: `0.1.9`
 - install surface: public
-- Managed Fluent: available at [meetfluent.app](https://meetfluent.app)
-- plugin-managed hosted auth: beta
+- Fluent online: available at [meetfluent.app](https://meetfluent.app)
+- hosted auth helper: beta
 - setup command labels: `cloud` and `oss`
 - minimum compatible Fluent MCP contract version: `2026-07-09.fluent-core-v2.0`
 - current reference Fluent MCP contract version: `2026-07-09.fluent-core-v2.0`
@@ -41,14 +41,14 @@ openclaw plugins install .
 
 The package targets Node.js `22+` and OpenClaw plugin API `2026.3.24-beta.2` or newer.
 
-For both managed and self-hosted use, the supported public OpenClaw install surface is still `fluent-openclaw`. Do not treat `fluent-oss/openclaw-plugin/fluent` as the same package release line.
+For both hosted and self-hosted use, the supported public OpenClaw install surface is still `fluent-openclaw`. Do not treat `fluent-oss/openclaw-plugin/fluent` as the same package release line.
 
-## Managed Setup
+## Use Fluent online
 
 1. Install `fluent-openclaw`.
 2. Run `openclaw fluent auth login`.
 3. Open the printed URL in your browser and finish sign-in.
-4. Bind managed Fluent into OpenClaw with `openclaw fluent mcp --track cloud`.
+4. Bind Fluent online into OpenClaw with `openclaw fluent mcp --track cloud`.
 5. Confirm the connection with `openclaw fluent doctor`.
 
 ## Run Fluent Yourself
@@ -89,7 +89,7 @@ openclaw fluent doctor --track oss --base-url http://127.0.0.1:8788 --token <oss
 | Fluent MCP public resources | Yes | Yes | Yes | Yes | Yes |
 | OpenAI plugin installation shared by ChatGPT and Codex | — | Yes | — | Yes | — |
 | Local client bundle with Fluent skills and routing hints | Yes | — | — | Yes | — |
-| Plugin-managed hosted auth helper in this package | Yes | No | No | No | No |
+| Hosted auth helper in this package | Yes | No | No | No | No |
 | Open-source MCP binding helper in this package | Yes | No | No | Yes | Manual config |
 | Rich Fluent app views | Host-dependent for promoted surfaces only | Promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only | Host-dependent for promoted surfaces only |
 | Text-first Fluent workflows | Yes | Yes | Yes | Yes | Yes |
@@ -109,7 +109,7 @@ Practical guidance:
 ## Known Limitations
 
 - This package is public beta, not GA.
-- Fluent is free to use. Plugin-managed hosted authentication remains beta.
+- There's no charge right now. The hosted auth helper remains beta.
 - OpenClaw currently uses Fluent's complete text responses; rich views depend on host support.
 - Open-source runtime setup still requires an explicit bearer token.
 - Browser and retailer execution helpers are intentionally omitted from the OpenClaw package.
@@ -134,7 +134,7 @@ Practical guidance:
 
 ## Notes
 
-- Managed Fluent is the hosted path; the open-source runtime is available when you want to run Fluent yourself.
-- The plugin manages hosted auth and rewrites `mcp.servers.fluent` for OpenClaw.
+- Fluent online is the hosted path; the open-source runtime is available when you want to run Fluent yourself.
+- The plugin handles hosted auth and rewrites `mcp.servers.fluent` for OpenClaw.
 - The bundled `openclaw-plugin/fluent` copy inside `fluent-oss` is an OSS helper package, not the published `fluent-openclaw` artifact.
 - Browser and retailer execution helpers are intentionally excluded so normal installs do not require unsafe-install overrides.

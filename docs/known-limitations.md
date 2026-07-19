@@ -5,7 +5,7 @@ These limits are part of the supported `v0.1.9` public beta release.
 ## Release Scope
 
 - `fluent-openclaw` is public beta, not GA.
-- Fluent is free to use. Plugin-managed hosted authentication remains beta.
+- There's no charge right now. The hosted auth helper remains beta.
 - The open-source version is available to anyone who wants to run Fluent themselves.
 
 ## OpenClaw Surface
@@ -17,7 +17,7 @@ These limits are part of the supported `v0.1.9` public beta release.
 ## Auth And Setup
 
 - Open-source runtime setup still requires a bearer token for `/mcp`.
-- Plugin-managed hosted authentication requires a managed Fluent account and an active OAuth grant with the required permissions.
+- Hosted authentication requires a Fluent account and an active OAuth grant with the required permissions.
 - `openclaw fluent doctor` verifies local binding and the live compatibility probe, but it does not replace a full end-to-end interactive prompt check inside OpenClaw.
 
 ## Intentional Omissions

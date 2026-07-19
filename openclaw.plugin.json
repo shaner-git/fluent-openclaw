@@ -2,7 +2,7 @@
   "id": "fluent",
   "name": "Fluent",
   "version": "0.1.9",
-  "description": "Fluent skills, managed auth, and MCP setup guidance for meals, style, and practical budget context.",
+  "description": "Fluent skills, hosted auth, and MCP setup guidance for meals, style, and practical budget context.",
   "skills": ["skills"],
   "configSchema": {
     "type": "object",
@@ -10,7 +10,7 @@
     "properties": {
       "baseUrl": {
         "type": "string",
-        "description": "Default Fluent base URL override for plugin-managed auth and MCP setup."
+        "description": "Default Fluent base URL override for hosted auth and MCP setup."
       },
       "defaultProfile": {
         "type": "string",
